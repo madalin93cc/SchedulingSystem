@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
@@ -13,13 +14,17 @@ import java.util.Properties;
 @Configuration
 public class DatabaseConfig {
     @Bean
-    public SimpleDriverDataSource dataSource(){
+    public SimpleDriverDataSource dataSource() throws SQLException {
+        String currentDir = System.getProperty("user.dir");
+        String runInitScript = "RUNSCRIPT FROM " + "\'" + currentDir + "/H2-DB/init.sql" + "\'";
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         Driver driver = new Driver();
         dataSource.setDriver(driver);
-        dataSource.setUrl("jdbc:h2:file:E:/Developing/GitHub/SchedulingSystem/H2-DB/SchedulingSystem;AUTO_SERVER=TRUE");
+        dataSource.setUrl("jdbc:h2:file:" + currentDir + "/H2-DB/SchedulingSystem;AUTO_SERVER=TRUE");
         dataSource.setUsername("admin");
         dataSource.setPassword("admin");
+
+        dataSource.getConnection().prepareStatement(runInitScript).execute();
 
         Properties props = new Properties();
         props.put("hibernate.query.substitutions", "true 'Y', false 'N'");
