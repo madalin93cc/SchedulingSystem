@@ -1,10 +1,21 @@
 package schedulingsystem.config;
 
+import org.apache.tomcat.jdbc.pool.DataSource;
 import org.h2.Driver;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -12,7 +23,26 @@ import java.util.Properties;
  * Created by Colezea on 13/04/2015.
  */
 @Configuration
+@EnableJpaRepositories(basePackages = "schedulingsystem.model.repository")
+@EnableTransactionManagement
 public class DatabaseConfig {
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws SQLException {
+        LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
+        lef.setDataSource(dataSource());
+        lef.setPackagesToScan("schedulingsystem.model.entity");
+        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        lef.setJpaVendorAdapter(vendorAdapter);
+
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        jpaProperties.put("hibernate.hbm2ddl.auto", "update");
+//        jpaProperties.put("hibernate.show_sql", "false");
+        lef.setJpaProperties(jpaProperties);
+        return lef;
+    }
+
     @Bean
     public SimpleDriverDataSource dataSource() throws SQLException {
         String currentDir = System.getProperty("user.dir");
@@ -26,101 +56,20 @@ public class DatabaseConfig {
 
         dataSource.getConnection().prepareStatement(runInitScript).execute();
 
-        Properties props = new Properties();
-        props.put("hibernate.query.substitutions", "true 'Y', false 'N'");
-        props.put("hibernate.hbm2ddl.auto", "create-drop");
-        props.put("hibernate.show_sql", "false");
-        props.put("hibernate.format_sql", "true");
-
-        dataSource.setConnectionProperties(props);
         return dataSource;
     }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+        jpaTransactionManager.setEntityManagerFactory(emf);
+
+        return jpaTransactionManager;
+    }
+
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslationPostProcessor(){
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
+
 }
-//public class DatabaseConfig {
-//    private static final String H2_JDBC_URL_TEMPLATE = "jdbc:h2:%s/target/db/sample;AUTO_SERVER=TRUE";
-//    @Value("classpath:seed-data.sql")
-//    private Resource H2_SCHEMA_SCRIPT;
-//
-//    @Value("classpath:test-data.sql")
-//    private Resource H2_DATA_SCRIPT;
-//
-//    @Value("classpath:drop-data.sql")
-//    private Resource H2_CLEANER_SCRIPT;
-//
-//
-//    @Bean
-//    public DataSource dataSource(Environment env) throws Exception {
-//        return createH2DataSource();
-//    }
-//
-//
-//    @Autowired
-//    @Bean
-//    public DataSourceInitializer dataSourceInitializer(final DataSource dataSource) {
-//
-//        final DataSourceInitializer initializer = new DataSourceInitializer();
-//        initializer.setDataSource(dataSource);
-//        initializer.setDatabasePopulator(databasePopulator());
-//        initializer.setDatabaseCleaner(databaseCleaner());
-//        return initializer;
-//    }
-//
-//
-//    private DatabasePopulator databasePopulator() {
-//        final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-//        populator.addScript(H2_SCHEMA_SCRIPT);
-//        populator.addScript(H2_DATA_SCRIPT);
-//        return populator;
-//    }
-//
-//    private DatabasePopulator databaseCleaner() {
-//        final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-//        populator.addScript(H2_CLEANER_SCRIPT);
-//        return populator;
-//    }
-//
-//    private DataSource createH2DataSource() {
-//        String jdbcUrl = String.format(H2_JDBC_URL_TEMPLATE, System.getProperty("user.dir"));
-//        JdbcDataSource ds = new JdbcDataSource();
-//        ds.setURL(jdbcUrl);
-//        ds.setUser("sa");
-//        ds.setPassword("");
-//
-//        return ds;
-//    }
-//
-//    @Bean
-//    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-//        JpaTransactionManager transactionManager = new JpaTransactionManager();
-//        transactionManager.setEntityManagerFactory(entityManagerFactory);
-//        return transactionManager;
-//    }
-//
-//    @Bean
-//    public LocalContainerEntityManagerFactoryBean entityManagerFactory(Environment env) throws Exception {
-//        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-//        vendorAdapter.setGenerateDdl(Boolean.TRUE);
-//        vendorAdapter.setShowSql(Boolean.TRUE);
-//
-//        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-//        factory.setPersistenceUnitName("sample");
-//        factory.setJpaVendorAdapter(vendorAdapter);
-//        factory.setPackagesToScan("com.sample.model");
-//        factory.setDataSource(dataSource(env));
-//
-//        factory.setJpaProperties(jpaProperties());
-//        factory.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
-//
-//        return factory;
-//    }
-//
-//    Properties jpaProperties() {
-//        Properties props = new Properties();
-//        props.put("hibernate.query.substitutions", "true 'Y', false 'N'");
-//        props.put("hibernate.hbm2ddl.auto", "create-drop");
-//        props.put("hibernate.show_sql", "false");
-//        props.put("hibernate.format_sql", "true");
-//
-//        return props;
-//    }
-//}

@@ -3,6 +3,7 @@ package schedulingsystem.config;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,28 +13,18 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import schedulingsystem.model.entity.Person;
+import schedulingsystem.model.repository.PersonRepository;
+import schedulingsystem.model.service.PersonService;
 
+import javax.inject.Inject;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 @SpringBootApplication
-@RestController
 public class SchedulingSystemApplication {
-
-    @RequestMapping("/user")
-    public Principal user(Principal user) {
-        return user;
-    }
-
-    @RequestMapping("/resource")
-    public Map<String,Object> home() {
-        Map<String,Object> model = new HashMap<String,Object>();
-        model.put("id", UUID.randomUUID().toString());
-        model.put("content", "Hello World");
-        return model;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(SchedulingSystemApplication.class, args);
