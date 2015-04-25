@@ -38,7 +38,7 @@ public class DatabaseConfig {
         Properties jpaProperties = new Properties();
         jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         jpaProperties.put("hibernate.hbm2ddl.auto", "update");
-//        jpaProperties.put("hibernate.show_sql", "false");
+        jpaProperties.put("hibernate.show_sql", "false");
         lef.setJpaProperties(jpaProperties);
         return lef;
     }
@@ -47,6 +47,7 @@ public class DatabaseConfig {
     public SimpleDriverDataSource dataSource() throws SQLException {
         String currentDir = System.getProperty("user.dir");
         String runInitScript = "RUNSCRIPT FROM " + "\'" + currentDir + "/H2-DB/init.sql" + "\'";
+        String runInitPupulateScript = "RUNSCRIPT FROM " + "\'" + currentDir + "/H2-DB/populate.sql" + "\'";
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         Driver driver = new Driver();
         dataSource.setDriver(driver);
@@ -55,6 +56,7 @@ public class DatabaseConfig {
         dataSource.setPassword("admin");
 
         dataSource.getConnection().prepareStatement(runInitScript).execute();
+        dataSource.getConnection().prepareStatement(runInitPupulateScript).execute();
 
         return dataSource;
     }
