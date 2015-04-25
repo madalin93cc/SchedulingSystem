@@ -7,6 +7,9 @@ angular.module('hello', [ 'ngRoute' ])
         }).when('/login', {
             templateUrl : 'login.html',
             controller : 'navigation'
+        }).when('/account', {
+            templateUrl: 'account.html',
+            controller: 'account'
         }).otherwise('/');
 
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
@@ -16,6 +19,9 @@ angular.module('hello', [ 'ngRoute' ])
         $http.get('/resource/').success(function(data) {
             $scope.greeting = data;
         })
+    })
+    .controller('account', function($scope, $http, $location) {
+//        $location.path("/");
     })
     .controller('navigation', function($rootScope, $scope, $http, $location) {
 
@@ -59,5 +65,8 @@ angular.module('hello', [ 'ngRoute' ])
             }).error(function(data) {
                 $rootScope.authenticated = false;
             });
+        };
+        $scope.createaccount = function() {
+            $location.path("/account");
         }
     });
