@@ -38,7 +38,7 @@ public class SchedulingSystemApplication {
             http
                     .httpBasic().and()
                     .authorizeRequests()
-                    .antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll().anyRequest()
+                    .antMatchers("account.html", "/index.html", "/home.html", "/login.html", "/").permitAll().anyRequest()
                     .authenticated().and()
                     .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
                     .csrf().csrfTokenRepository(csrfTokenRepository())
