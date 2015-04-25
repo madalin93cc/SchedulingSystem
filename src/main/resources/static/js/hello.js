@@ -22,6 +22,12 @@ angular.module('hello', [ 'ngRoute' ])
     })
     .controller('account', function($scope, $http, $location) {
 //        $location.path("/");
+//        var create = function(credentials, callback) {
+//            var headers = credentials ? {authorization : "Basic "
+//                + btoa(credentials.prenume + ":" + credentials.nume
+//                    + ":" + credentials.user  + ":" + credentials.parola)
+//            } : {};
+//        }
     })
     .controller('navigation', function($rootScope, $scope, $http, $location) {
 
