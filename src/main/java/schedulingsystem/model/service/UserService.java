@@ -7,5 +7,5 @@ import schedulingsystem.model.entity.User;
  */
 public interface UserService {
 
-    public User createAccount(String firstName, String lastName, String username, String password, Integer type);
+    public User createAccount(String firstName, String lastName, String username, String password, String type);
 }

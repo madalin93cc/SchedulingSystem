@@ -1,9 +1,8 @@
 package schedulingsystem.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import schedulingsystem.model.service.PersonService;
+import schedulingsystem.model.service.UserService;
 
 import javax.inject.Inject;
 import java.security.Principal;

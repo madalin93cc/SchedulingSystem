@@ -18,9 +18,19 @@ public class UserServiceImpl implements UserService{
     @Inject
     UserRepository userRepository;
 
+    public UserServiceImpl() {
+    }
+
     @Override
-    public User createAccount(String firstName, String lastName, String username, String password, Integer type) {
-        User user = new User(firstName, lastName, username, password, type);
+    public User createAccount(String firstName, String lastName, String username, String password, String type) {
+        Integer intType = null;
+        if ("option1".compareTo(type) == 0){
+            intType = 0;
+        }
+        else if ("option2".compareTo(type) == 0){
+            intType = 1;
+        }
+        User user = new User(firstName, lastName, username, password, intType);
         return userRepository.save(user);
     }
 }

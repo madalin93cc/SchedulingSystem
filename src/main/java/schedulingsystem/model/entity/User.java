@@ -1,9 +1,7 @@
 package schedulingsystem.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Colezea on 26/04/2015.
@@ -15,13 +13,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "FIRSTNAME", nullable = false, length = 30)
     private String firstName;
+    @Column(name = "LASTNAME", nullable = false, length = 30)
     private String lastName;
+    @Column(name = "USERNAME", nullable = false, length = 30)
     private String username;
+    @Column(name = "PASSWORD", nullable = false, length = 30)
     private String password;
-
+    @Column(name = "TYPE", nullable = false)
     private Integer type;
+    @Column(name = "FKEVENTSCREATED", nullable = true)
     private Integer fkEventsCreated;
+    @Column(name = "FKEVENTSJOINED", nullable = true)
     private Integer fkEventsJoined;
 
     public User() {

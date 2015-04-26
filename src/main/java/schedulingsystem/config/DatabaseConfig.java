@@ -25,6 +25,7 @@ import java.util.Properties;
 @Configuration
 @EnableJpaRepositories(basePackages = "schedulingsystem.model.repository")
 @EnableTransactionManagement
+@ComponentScan(basePackages = "schedulingsystem")
 public class DatabaseConfig {
 
     @Bean

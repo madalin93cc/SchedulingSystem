@@ -10,6 +10,9 @@ import schedulingsystem.model.service.UserService;
 import schedulingsystem.utils.RequestMappingEnum;
 
 import javax.inject.Inject;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by Colezea on 26/04/2015.
@@ -26,8 +29,16 @@ public class UserController {
                               @PathVariable("lastName") String lastName,
                               @PathVariable("username") String username,
                               @PathVariable("password") String password,
-                              @PathVariable("type") Integer type){
-        userService.createAccount(firstName, lastName, username, password, type);
-        return null;
+                              @PathVariable("type") String type){
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\n\n");
+        return userService.createAccount(firstName, lastName, username, password, type);
+    }
+
+    @RequestMapping("/data")
+    public Map<String,Object> home() {
+        Map<String,Object> model = new HashMap<String,Object>();
+        model.put("id", UUID.randomUUID().toString());
+        model.put("content", "Hello World");
+        return model;
     }
 }
