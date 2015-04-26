@@ -4,16 +4,17 @@
 <div class="" id="loginModal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3>Have an Account?</h3>
+        <h3>Adaugare sala in sistem</h3>
     </div>
     <div class="modal-body">
         <div class="well">
             <ul class="nav nav-tabs">
-                <li ng-click="changeSelected(1)" ng-class="{active: selected==1}"><a href="#creearesala/#login" data-toggle="tab">Login</a></li>
-                <li ng-click="changeSelected(2)" ng-class="{active: selected==2}"><a href="#creearesala/#create" data-toggle="tab">Create Account</a></li>
+                <li><a href="#creearesala/#date" data-toggle="tab">Date generale</a></li>
+                <li><a href="#creearesala/#locatie" data-toggle="tab">Locatie</a></li>
+                <li><a href="#creearesala/#facilitati" data-toggle="tab">Facilitati</a></li>
             </ul>
             <div id="myTabContent" class="tab-content">
-                <div class="tab-pane active in" id="login" ng-ac>
+                <div class="tab-pane active in" id="date">
                     <form class="form-horizontal" action='' method="POST">
                         <fieldset>
                             <div id="legend">
@@ -45,22 +46,49 @@
                         </fieldset>
                     </form>
                 </div>
-                <div class="tab-pane fade" id="create">
+                <div class="tab-pane fade" id="locatie">
                     <form id="tab">
-                        <label>Username</label>
+                        <label>Oras</label>
                         <input type="text" value="" class="input-xlarge">
-                        <label>First Name</label>
+                        <label>Adresa</label>
                         <input type="text" value="" class="input-xlarge">
-                        <label>Last Name</label>
-                        <input type="text" value="" class="input-xlarge">
-                        <label>Email</label>
-                        <input type="text" value="" class="input-xlarge">
-                        <label>Address</label>
-                        <textarea value="Smith" rows="3" class="input-xlarge">
-                        </textarea>
-
-                        <div>
-                            <button class="btn btn-primary">Create Account</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="facilitati">
+                    <form id="tab">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Aer conditionat
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Lumina naturala
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Intunecare
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Scena la prezidiu
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Servicii catering
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Restaurant
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Parcare
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Lift
+                            </label>
                         </div>
                     </form>
                 </div>
