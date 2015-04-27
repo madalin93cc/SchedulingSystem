@@ -3,17 +3,16 @@
 
 <div class="" id="loginModal">
     <div class="modal-header">
-        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
         <h3>Adaugare sala in sistem</h3>
     </div>
     <div class="container">
         <div class="well">
         <!--row in loc de well-->
             <ul class="nav nav-tabs">
-                <li><a href="#creearesala/#date" data-toggle="tab">Date generale</a></li>
-                <li><a href="#creearesala/#locatie" data-toggle="tab">Locatie</a></li>
-                <li><a href="#creearesala/#facilitati" data-toggle="tab">Facilitati</a></li>
-                <li><a href="#creearesala/#echipamente" data-toggle="tab">Echipamente</a></li>
+                <li ng-click="changeSelected(1)" ng-class="{active: selected==1}"><a href="#creearesala/#date" data-toggle="tab">Date generale</a></li>
+                <li ng-click="changeSelected(2)" ng-class="{active: selected==2}"><a href="#creearesala/#locatie" data-toggle="tab">Locatie</a></li>
+                <li ng-click="changeSelected(3)" ng-class="{active: selected==3}"><a href="#creearesala/#facilitati" data-toggle="tab">Facilitati</a></li>
+                <li ng-click="changeSelected(4)" ng-class="{active: selected==4}"><a href="#creearesala/#echipamente" data-toggle="tab">Echipamente</a></li>
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane active in" id="date">
@@ -46,21 +45,12 @@
                                 </div>
                             </div>
 
-                            <!--<div class="control-group">-->
-                                <!--&lt;!&ndash; Button &ndash;&gt;-->
-                                <!--<div class="controls">-->
-                                    <!--<button class="btn btn-success">Salveaza</button>-->
-                                <!--</div>-->
-                            <!--</div>-->
                         </fieldset>
                     </form>
                 </div>
                 <div class="tab-pane fade" id="locatie">
                     <form class="form-horizontal" action='' method="POST">
                         <fieldset>
-                            <!--<div id="legend">-->
-                                <!--<legend class="">Login</legend>-->
-                            <!--</div>-->
                             <div class="control-group">
                                 <!-- Username -->
                                 <label class="control-label"  for="denumire2">Denumire locatie/Hotel</label>
@@ -101,20 +91,8 @@
                                 </div>
                             </div>
 
-                            <!--<div class="control-group">-->
-                                <!--&lt;!&ndash; Button &ndash;&gt;-->
-                                <!--<div class="controls">-->
-                                    <!--<button class="btn btn-success">Salveaza</button>-->
-                                <!--</div>-->
-                            <!--</div>-->
                         </fieldset>
                     </form>
-                    <!--<form id="tab">-->
-                        <!--<label>Oras</label>-->
-                        <!--<input type="text" value="" class="input-xlarge">-->
-                        <!--<label>Adresa</label>-->
-                        <!--<input type="text" value="" class="input-xlarge">-->
-                    <!--</form>-->
                 </div>
                 <div class="tab-pane fade" id="facilitati">
                     <!--<form id="tab">-->
@@ -153,12 +131,6 @@
                                 <input type="checkbox" value="">
                                 Lift
                             </label>
-                            <!--<div class="control-group">-->
-                                <!--&lt;!&ndash; Button &ndash;&gt;-->
-                                <!--<div class="controls">-->
-                                    <!--<button class="btn btn-success">Salveaza</button>-->
-                                <!--</div>-->
-                            <!--</div>-->
                         </div>
                         </fieldset>
                     </form>
@@ -216,17 +188,11 @@
                                 <input type="checkbox" value="">
                                 Imprimanta, copiator, fax
                             </label>
-                            <!--<div class="control-group">-->
-                                <!--&lt;!&ndash; Button &ndash;&gt;-->
-                                <!--<div class="controls">-->
-                                    <!--<button class="btn btn-success">Salveaza</button>-->
-                                <!--</div>-->
-                            <!--</div>-->
                         </div>
                         </fieldset>
                     </form>
                 </div>
-                <form class="form-horizontal" action='' method="POST">
+                <form class="form-horizontal">
                     <fieldset>
                         <div class="control-group">
                             <!-- Button -->

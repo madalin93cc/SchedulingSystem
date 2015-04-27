@@ -61,24 +61,24 @@
 </form>
 
 <head>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#myModal").modal('show');
-        });
-    </script>
+    <!--<script type="text/javascript">-->
+        <!--$(document).ready(function(){-->
+            <!--$("#successPopup").modal('show');-->
+        <!--});-->
+    <!--</script>-->
 </head>
 <body>
-<div id="myModal" class="modal fade">
+<div id="successPopup" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Confirmation</h4>
             </div>
             <div class="modal-body">
-                <p>Contul a fost creat cu succes.</p>
+                <p>{{createMessage}}</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button ng-click="goHome()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
