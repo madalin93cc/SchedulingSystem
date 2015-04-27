@@ -30,7 +30,6 @@ public class UserController {
                               @PathVariable("username") String username,
                               @PathVariable("password") String password,
                               @PathVariable("type") String type){
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\n\n");
         return userService.createAccount(firstName, lastName, username, password, type);
     }
 

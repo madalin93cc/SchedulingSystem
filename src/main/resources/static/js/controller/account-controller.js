@@ -6,7 +6,7 @@ app.controller('account', function($scope, $http, $location) {
             + user.password + "/"
             + user.type;
 
-        $http.post($scope.url, {}).success(function() {
+        $http.post($scope.url, {}).success(function(data) {
             $location.path("/");
         }).error(function() {
 //            TODO mesaj creare cont
