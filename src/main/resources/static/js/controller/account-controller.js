@@ -10,12 +10,14 @@ app.controller('account', function($scope, $http, $location) {
             if (data == ""){
                 $scope.createMessage = "Cont deja existent."
                 $("#successPopup").modal('show');
-//                $("#successPopup").css("background-color", "yellow");
-                $("#successPopup").getModalBody().css('background-color', '#0088cc');
+                $("#content").css("background-color", "#FFBABA");
+                $("#content").css("color", "#D8000C");
             }
             else{
                 $scope.createMessage = "Contul a fost creat cu succes."
                 $("#successPopup").modal('show');
+                $("#content").css("background-color", "#DFF2BF");
+                $("#content").css("color", "#4F8A10");
             }
         }).error(function() {
         });
