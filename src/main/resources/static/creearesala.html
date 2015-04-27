@@ -6,56 +6,120 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3>Adaugare sala in sistem</h3>
     </div>
-    <div class="modal-body">
+    <div class="container">
         <div class="well">
+        <!--row in loc de well-->
             <ul class="nav nav-tabs">
                 <li><a href="#creearesala/#date" data-toggle="tab">Date generale</a></li>
                 <li><a href="#creearesala/#locatie" data-toggle="tab">Locatie</a></li>
                 <li><a href="#creearesala/#facilitati" data-toggle="tab">Facilitati</a></li>
+                <li><a href="#creearesala/#echipamente" data-toggle="tab">Echipamente</a></li>
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane active in" id="date">
                     <form class="form-horizontal" action='' method="POST">
                         <fieldset>
-                            <div id="legend">
-                                <legend class="">Login</legend>
-                            </div>
+                            <!--<div id="legend">-->
+                                <!--<legend class="">Login</legend>-->
+                            <!--</div>-->
                             <div class="control-group">
                                 <!-- Username -->
-                                <label class="control-label"  for="username">Username</label>
+                                <label class="control-label"  for="denumire">Denumire sala</label>
                                 <div class="controls">
-                                    <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                                    <input type="text" id="denumire" name="denumire" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <!-- Password-->
-                                <label class="control-label" for="password">Password</label>
+                                <label class="control-label" for="suprafata">Suprafata sala</label>
                                 <div class="controls">
-                                    <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                                    <input type="text" id="suprafata" name="suprafata" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
+                            <div class="control-group">
+                                <!-- Password-->
+                                <label class="control-label" for="locuri">Numar locuri</label>
+                                <div class="controls">
+                                    <input type="text" id="locuri" name="locuri" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
 
                             <div class="control-group">
                                 <!-- Button -->
                                 <div class="controls">
-                                    <button class="btn btn-success">Login</button>
+                                    <button class="btn btn-success">Salveaza</button>
                                 </div>
                             </div>
                         </fieldset>
                     </form>
                 </div>
                 <div class="tab-pane fade" id="locatie">
-                    <form id="tab">
-                        <label>Oras</label>
-                        <input type="text" value="" class="input-xlarge">
-                        <label>Adresa</label>
-                        <input type="text" value="" class="input-xlarge">
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                            <!--<div id="legend">-->
+                                <!--<legend class="">Login</legend>-->
+                            <!--</div>-->
+                            <div class="control-group">
+                                <!-- Username -->
+                                <label class="control-label"  for="denumire">Denumire locatie/Hotel</label>
+                                <div class="controls">
+                                    <input type="text" id="denumire" name="denumire" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Password-->
+                                <label class="control-label" for="oras">Oras</label>
+                                <div class="controls">
+                                    <input type="text" id="oras" name="oras" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Password-->
+                                <label class="control-label" for="sector">Sector</label>
+                                <div class="controls">
+                                    <input type="text" id="sector" name="sector" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Password-->
+                                <label class="control-label" for="strada">Strada</label>
+                                <div class="controls">
+                                    <input type="text" id="strada" name="strada" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Password-->
+                                <label class="control-label" for="numar">Numar</label>
+                                <div class="controls">
+                                    <input type="text" id="numar" name="numar" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Button -->
+                                <div class="controls">
+                                    <button class="btn btn-success">Salveaza</button>
+                                </div>
+                            </div>
+                        </fieldset>
                     </form>
+                    <!--<form id="tab">-->
+                        <!--<label>Oras</label>-->
+                        <!--<input type="text" value="" class="input-xlarge">-->
+                        <!--<label>Adresa</label>-->
+                        <!--<input type="text" value="" class="input-xlarge">-->
+                    <!--</form>-->
                 </div>
                 <div class="tab-pane fade" id="facilitati">
-                    <form id="tab">
+                    <!--<form id="tab">-->
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" value="">
@@ -89,7 +153,77 @@
                                 <input type="checkbox" value="">
                                 Lift
                             </label>
+                            <div class="control-group">
+                                <!-- Button -->
+                                <div class="controls">
+                                    <button class="btn btn-success">Salveaza</button>
+                                </div>
+                            </div>
                         </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="echipamente">
+                    <!--<form id="tab">-->
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Acces internet wireless
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Videoproiector
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Laser pointer
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Flipchart, hartie, markere
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Whiteboard
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Sonorizare
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Microfoane
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Plasma tv/LCD
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Video conferinta
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Inregistrare audio-video
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Laptop, PC
+                            </label>
+                            <label>
+                                <input type="checkbox" value="">
+                                Imprimanta, copiator, fax
+                            </label>
+                            <div class="control-group">
+                                <!-- Button -->
+                                <div class="controls">
+                                    <button class="btn btn-success">Salveaza</button>
+                                </div>
+                            </div>
+                        </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
