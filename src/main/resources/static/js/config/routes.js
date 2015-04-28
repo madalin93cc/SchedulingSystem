@@ -12,6 +12,9 @@ app.config(function($routeProvider, $httpProvider) {
     }).when('/creearesala', {
         templateUrl : 'creearesala.html',
         controller: 'creearesala'
+    }).when('/rezervaresala', {
+        templateUrl : 'rezervaresala.html',
+        controller: 'rezervaresala'
     }).otherwise('/');
 
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
