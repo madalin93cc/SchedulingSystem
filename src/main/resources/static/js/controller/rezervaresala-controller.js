@@ -1,3 +1,3 @@
-/**
- * Created by VladC on 4/28/2015.
- */
+app.controller('rezervaresala', function($scope, $http) {
+
+});
