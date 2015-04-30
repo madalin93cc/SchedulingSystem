@@ -24,17 +24,14 @@ public class ConferenceRoom {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
-//    @Column(name = "fkLocation", nullable = false)
     private Location fkLocation;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
-//    @Column(name = "fkFeatures", nullable = false)
     private Features fkFeatures;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
-//    @Column(name = "fkEquipment", nullable = false)
     private Equipment fkEquipment;
 
     public ConferenceRoom() {
