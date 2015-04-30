@@ -38,7 +38,7 @@
                                 <!-- Numar locuri-->
                                 <label class="control-label" for="locuri">Numar locuri</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.placesnumber" type="text" id="locuri" name="locuri" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.placesNumber" type="text" id="locuri" name="locuri" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
                         </fieldset>
@@ -80,10 +80,26 @@
                             </div>
 
                             <div class="control-group">
+                                <!-- Etaj -->
+                                <label class="control-label" for="strada">Etaj</label>
+                                <div class="controls">
+                                    <input ng-model="conferenceroom.floor" type="text" id="etaj" name="etaj" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
                                 <!-- Numar -->
                                 <label class="control-label" for="numar">Numar</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.streetnumber" type="text" id="numar" name="numar" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.streetNumber" type="text" id="numar" name="numar" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Indicatii -->
+                                <label class="control-label" for="numar">Indicatii de orientare</label>
+                                <div class="controls">
+                                    <textarea ng-model="conferenceroom.indication" class="field span4" rows="3" id="indicatii" name="indicatii"></textarea>
                                 </div>
                             </div>
 
@@ -96,19 +112,19 @@
                         <fieldset>
                         <div class="checkbox">
                             <label>
-                                <input ng-model="conferenceroom.climatesystem" type="checkbox" value="">
+                                <input ng-model="conferenceroom.climateSystem" type="checkbox" value="">
                                 Aer conditionat
                             </label>
                             <label>
-                                <input ng-model="conferenceroom.naturallight" type="checkbox" value="">
+                                <input ng-model="conferenceroom.naturalLight" type="checkbox" value="">
                                 Lumina naturala
                             </label>
                             <label>
-                                <input ng-model="conferenceroom.intunecare" type="checkbox" value="">
+                                <input ng-model="conferenceroom.darkness" type="checkbox" value="">
                                 Intunecare
                             </label>
                             <label>
-                                <input ng-model="conferenceroom.scenalaprezidiu" type="checkbox" value="">
+                                <input ng-model="conferenceroom.scene" type="checkbox" value="">
                                 Scena la prezidiu
                             </label>
                             <label>
@@ -141,12 +157,16 @@
                                 Acces internet wireless
                             </label>
                             <label>
-                                <input ng-model="conferenceroom.videoproiector" type="checkbox" value="">
+                                <input ng-model="conferenceroom.videoprojector" type="checkbox" value="">
                                 Videoproiector
                             </label>
                             <label>
                                 <input ng-model="conferenceroom.laserpointer" type="checkbox" value="">
                                 Laser pointer
+                            </label>
+                            <label>
+                                <input ng-model="conferenceroom.projectionScreen" type="checkbox" value="">
+                                Ecran pentru proiectii
                             </label>
                             <label>
                                 <input ng-model="conferenceroom.flipchart" type="checkbox" value="">
@@ -173,16 +193,20 @@
                                 Video conferinta
                             </label>
                             <label>
-                                <input ng-model="conferenceroom.record" type="checkbox" value="">
+                                <input ng-model="conferenceroom.recordAV" type="checkbox" value="">
                                 Inregistrare audio-video
                             </label>
                             <label>
-                                <input ng-model="conferenceroom.laptops" type="checkbox" value="">
+                                <input ng-model="conferenceroom.laptop" type="checkbox" value="">
                                 Laptop, PC
                             </label>
                             <label>
                                 <input ng-model="conferenceroom.printer" type="checkbox" value="">
                                 Imprimanta, copiator, fax
+                            </label>
+                            <label>
+                                <input ng-model="conferenceroom.translator" type="checkbox" value="">
+                                Translator
                             </label>
                         </div>
                         </fieldset>

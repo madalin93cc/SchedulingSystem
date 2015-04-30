@@ -19,26 +19,35 @@ public class ConferenceRoom {
     @Column(name = "PlacesNumber", nullable = false)
     private Integer placesNumber;
 
-    @Column(name = "FKLocation", nullable = false)
-    private Integer fkLocation;
+    @Column(name = "Surface", nullable = true)
+    private Integer surface;
 
-    @Column(name = "FKFeatures", nullable = false)
-    private Integer fkFeatures;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
+//    @Column(name = "fkLocation", nullable = false)
+    private Location fkLocation;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
+//    @Column(name = "fkFeatures", nullable = false)
+    private Features fkFeatures;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
+//    @Column(name = "fkEquipment", nullable = false)
+    private Equipment fkEquipment;
 
     public ConferenceRoom() {
 
     }
 
-    public ConferenceRoom(String name,
-                          Integer placesNumber,
-                          Integer fkLocation,
-                          Integer fkFeatures) {
-
+    public ConferenceRoom(String name, Integer placesNumber, Integer surface, Location fkLocation, Features fkFeatures, Equipment fkEquipment) {
         this.name = name;
         this.placesNumber = placesNumber;
+        this.surface = surface;
         this.fkLocation = fkLocation;
         this.fkFeatures = fkFeatures;
-
+        this.fkEquipment = fkEquipment;
     }
 
     public Long getId() {
@@ -65,25 +74,35 @@ public class ConferenceRoom {
         this.placesNumber = placesNumber;
     }
 
-    public Integer getFkLocation() {
+    public Integer getSurface() {
+        return surface;
+    }
+
+    public void setSurface(Integer surface) {
+        this.surface = surface;
+    }
+
+    public Location getFkLocation() {
         return fkLocation;
     }
 
-    public void setFkLocation(Integer fkLocation) {
+    public void setFkLocation(Location fkLocation) {
         this.fkLocation = fkLocation;
     }
 
-    public Integer getFkFeatures() {
+    public Features getFkFeatures() {
         return fkFeatures;
     }
 
-    public void setFkFeatures(Integer fkFeatures) {
+    public void setFkFeatures(Features fkFeatures) {
         this.fkFeatures = fkFeatures;
     }
+
+    public Equipment getFkEquipment() {
+        return fkEquipment;
+    }
+
+    public void setFkEquipment(Equipment fkEquipment) {
+        this.fkEquipment = fkEquipment;
+    }
 }
-
-
-
-
-
-

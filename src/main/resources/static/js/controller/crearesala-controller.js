@@ -1,5 +1,5 @@
-app.controller('creearesala', ['$rootScope', '$scope', '$location', 'CrearesalaService',
-    function($rootScope, $scope, $location, CrearesalaService) {
+app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'CrearesalaService',
+    function($rootScope, $scope, $location, $http, CrearesalaService) {
 
     if ($location.$$url == "/creearesala"){
         $rootScope.selected = 1;
@@ -31,6 +31,13 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', 'CrearesalaS
     }
     
     $scope.saveConferenceRoom = function () {
+        var body = {
+            firstName: "a",
+            lastName: "a",
+            username: "a",
+            password: "a"
+        };
         debugger
+        $http.post('/add/conferenceroom/', CrearesalaService.conferenceroom);
     }
 }]);

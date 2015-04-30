@@ -5,7 +5,6 @@ app.service('CrearesalaService', function() {
     this.conferenceroom.equipments = new Object();
 
     this.update = function(oldSelect, oldConferenceRoom){
-        debugger
         switch(oldSelect){
             case 1:{
                 for (var key in oldConferenceRoom){
@@ -30,7 +29,6 @@ app.service('CrearesalaService', function() {
     }
 
     this.load = function(sel){
-        debugger;
         var ret = new Object();
         switch (sel){
             case 1:{
