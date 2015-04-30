@@ -18,33 +18,29 @@
                 <div class="tab-pane active in" id="date">
                     <form class="form-horizontal" action='' method="POST">
                         <fieldset>
-                            <!--<div id="legend">-->
-                                <!--<legend class="">Login</legend>-->
-                            <!--</div>-->
                             <div class="control-group">
-                                <!-- Username -->
+                                <!-- Denumire sala -->
                                 <label class="control-label"  for="denumire1">Denumire sala</label>
                                 <div class="controls">
-                                    <input type="text" id="denumire1" name="denumire" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.name" type="text" id="denumire1" name="denumire" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <!-- Password-->
+                                <!-- Suprafata sala-->
                                 <label class="control-label" for="suprafata">Suprafata sala</label>
                                 <div class="controls">
-                                    <input type="text" id="suprafata" name="suprafata" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.surface" type="text" id="suprafata" name="suprafata" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <!-- Password-->
+                                <!-- Numar locuri-->
                                 <label class="control-label" for="locuri">Numar locuri</label>
                                 <div class="controls">
-                                    <input type="text" id="locuri" name="locuri" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.placesnumber" type="text" id="locuri" name="locuri" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
-
                         </fieldset>
                     </form>
                 </div>
@@ -52,42 +48,42 @@
                     <form class="form-horizontal" action='' method="POST">
                         <fieldset>
                             <div class="control-group">
-                                <!-- Username -->
+                                <!-- Denumire locatie/hotel -->
                                 <label class="control-label"  for="denumire2">Denumire locatie/Hotel</label>
                                 <div class="controls">
-                                    <input type="text" id="denumire2" name="denumire" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.name" type="text" id="denumire2" name="denumire" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <!-- Password-->
+                                <!-- Oras-->
                                 <label class="control-label" for="oras">Oras</label>
                                 <div class="controls">
-                                    <input type="text" id="oras" name="oras" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.city"type="text" id="oras" name="oras" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <!-- Password-->
+                                <!-- Sector -->
                                 <label class="control-label" for="sector">Sector</label>
                                 <div class="controls">
-                                    <input type="text" id="sector" name="sector" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.sector" type="text" id="sector" name="sector" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <!-- Password-->
+                                <!-- Strada -->
                                 <label class="control-label" for="strada">Strada</label>
                                 <div class="controls">
-                                    <input type="text" id="strada" name="strada" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.street" type="text" id="strada" name="strada" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <!-- Password-->
+                                <!-- Numar -->
                                 <label class="control-label" for="numar">Numar</label>
                                 <div class="controls">
-                                    <input type="text" id="numar" name="numar" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.streetnumber" type="text" id="numar" name="numar" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
@@ -100,35 +96,35 @@
                         <fieldset>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.climatesystem" type="checkbox" value="">
                                 Aer conditionat
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.naturallight" type="checkbox" value="">
                                 Lumina naturala
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.intunecare" type="checkbox" value="">
                                 Intunecare
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.scenalaprezidiu" type="checkbox" value="">
                                 Scena la prezidiu
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.catering" type="checkbox" value="">
                                 Servicii catering
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.restaurant" type="checkbox" value="">
                                 Restaurant
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.parking" type="checkbox" value="">
                                 Parcare
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.elevator" type="checkbox" value="">
                                 Lift
                             </label>
                         </div>
@@ -141,51 +137,51 @@
                         <fieldset>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.wireless" type="checkbox" value="">
                                 Acces internet wireless
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.videoproiector" type="checkbox" value="">
                                 Videoproiector
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.laserpointer" type="checkbox" value="">
                                 Laser pointer
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.flipchart" type="checkbox" value="">
                                 Flipchart, hartie, markere
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.whiteboard" type="checkbox" value="">
                                 Whiteboard
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.soundsystem" type="checkbox" value="">
                                 Sonorizare
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.microphones" type="checkbox" value="">
                                 Microfoane
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.tv" type="checkbox" value="">
                                 Plasma tv/LCD
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.videoconference" type="checkbox" value="">
                                 Video conferinta
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.record" type="checkbox" value="">
                                 Inregistrare audio-video
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.laptops" type="checkbox" value="">
                                 Laptop, PC
                             </label>
                             <label>
-                                <input type="checkbox" value="">
+                                <input ng-model="conferenceroom.printer" type="checkbox" value="">
                                 Imprimanta, copiator, fax
                             </label>
                         </div>
@@ -197,7 +193,7 @@
                         <div class="control-group">
                             <!-- Button -->
                             <div class="controls">
-                                <button class="btn btn-success">Salveaza</button>
+                                <button ng-click="saveConferenceRoom()" class="btn btn-success">Salveaza</button>
                             </div>
                         </div>
                     </fieldset>

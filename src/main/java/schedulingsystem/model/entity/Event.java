@@ -12,7 +12,7 @@ import java.sql.Time;
  * Created by Adi on 29.04.2015.
  */
 
-@Entity
+//@Entity
 public class Event {
 
     @Id
