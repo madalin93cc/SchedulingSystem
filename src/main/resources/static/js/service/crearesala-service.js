@@ -1,8 +1,8 @@
 app.service('CrearesalaService', function() {
     this.conferenceroom = new Object();
-    this.conferenceroom.location = new Object();
-    this.conferenceroom.features = new Object();
-    this.conferenceroom.equipments = new Object();
+    this.conferenceroom.fkLocation = new Object();
+    this.conferenceroom.fkFeatures = new Object();
+    this.conferenceroom.fkEquipment = new Object();
 
     this.update = function(oldSelect, oldConferenceRoom){
         switch(oldSelect){
@@ -14,15 +14,15 @@ app.service('CrearesalaService', function() {
                 break;
             }
             case 2:{
-                this.conferenceroom.location = jQuery.extend({}, oldConferenceRoom);
+                this.conferenceroom.fkLocation = jQuery.extend({}, oldConferenceRoom);
                 break;
             }
             case 3:{
-                this.conferenceroom.features = jQuery.extend({}, oldConferenceRoom);
+                this.conferenceroom.fkFeatures = jQuery.extend({}, oldConferenceRoom);
                 break;
             }
             case 4:{
-                this.conferenceroom.equipments = jQuery.extend({}, oldConferenceRoom);
+                this.conferenceroom.fkEquipment = jQuery.extend({}, oldConferenceRoom);
                 break;
             }
         }
@@ -40,15 +40,15 @@ app.service('CrearesalaService', function() {
                 break;
             }
             case 2:{
-                ret = jQuery.extend({}, this.conferenceroom.location);
+                ret = jQuery.extend({}, this.conferenceroom.fkLocation);
                 break;
             }
             case 3:{
-                ret = jQuery.extend({}, this.conferenceroom.features);
+                ret = jQuery.extend({}, this.conferenceroom.fkFeatures);
                 break;
             }
             case 4:{
-                ret = jQuery.extend({}, this.conferenceroom.equipments);
+                ret = jQuery.extend({}, this.conferenceroom.fkEquipment);
                 break;
             }
         }
