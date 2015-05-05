@@ -1,58 +1,35 @@
-package schedulingsystem.model.entity;
+package schedulingsystem.model.dto;
 
-import schedulingsystem.model.dto.LocationDTO;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
- * Created by Adi on 29.04.2015.
+ * Created by Madalin.Colezea on 5/5/2015.
  */
-@Entity
-public class Location {
+public class LocationDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "Name", nullable = false, length = 30)
     private String name;
 
-    @Column(name = "City", nullable = false, length = 30)
     private String city;
 
-    @Column(name = "Sector", nullable = true, length = 30)
     private String sector;
 
-    @Column(name = "Street", nullable = false, length = 200)
     private String street;
 
-    @Column(name = "Floor", nullable = true, length = 5)
     private String floor;
-
-    @Column(name = "StreetNumber", nullable = false)
     private String streetNumber;
 
-    @Column(name = "Indications", nullable = true, length = 200)
     private String indication;
 
-    @OneToOne(optional = false, mappedBy = "fkLocation")
-    private ConferenceRoom conferenceRoom;
-
-    public Location() {
+    public LocationDTO() {
     }
 
-    public Location(LocationDTO locationDTO){
-        this.name = locationDTO.getName();
-        this.city = locationDTO.getCity();
-        this.sector = locationDTO.getSector();
-        this.street = locationDTO.getStreet();
-        this.floor = locationDTO.getFloor();
-        this.streetNumber = locationDTO.getStreetNumber();
-        this.indication = locationDTO.getIndication();
-    }
-
-    public Location(String name, String city, String sector, String street, String floor, String streetNumber, String indication) {
+    public LocationDTO(Long id, String name, String city, String sector, String street, String floor, String streetNumber, String indication) {
+        this.id = id;
         this.name = name;
         this.city = city;
         this.sector = sector;
@@ -124,13 +101,5 @@ public class Location {
 
     public void setIndication(String indication) {
         this.indication = indication;
-    }
-
-    public ConferenceRoom getConferenceRoom() {
-        return conferenceRoom;
-    }
-
-    public void setConferenceRoom(ConferenceRoom conferenceRoom) {
-        this.conferenceRoom = conferenceRoom;
     }
 }

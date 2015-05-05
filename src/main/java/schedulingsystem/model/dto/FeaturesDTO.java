@@ -1,70 +1,46 @@
-package schedulingsystem.model.entity;
+package schedulingsystem.model.dto;
 
-import schedulingsystem.model.dto.FeaturesDTO;
+import schedulingsystem.model.entity.ConferenceRoom;
+import schedulingsystem.model.entity.Features;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Created by Adi on 29.04.2015.
+ * Created by Madalin.Colezea on 5/5/2015.
  */
+public class FeaturesDTO implements Serializable {
 
-@Entity
-public class Features {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "ClimateSystem", nullable = true)
     private Boolean climateSystem;
 
-    @Column(name = "NaturalLight", nullable = true)
     private Boolean naturalLight;
 
-    @Column(name = "Darkness", nullable = true)
     private Boolean darkness;
 
-    @Column(name = "Scene", nullable = true)
     private Boolean scene;
 
-    @Column(name = "Catering", nullable = true)
     private Boolean catering;
 
-    @Column(name = "Restaurant", nullable = true)
     private Boolean restaurant;
 
-    @Column(name = "Parking", nullable = true)
     private Boolean parking;
 
-    @Column(name = "Elevator", nullable = true)
     private Boolean elevator;
 
-    @OneToOne(optional = false, mappedBy = "fkFeatures")
-    private ConferenceRoom conferenceRoom;
-
-    public Features() {
+    public FeaturesDTO() {
     }
 
-
-    public Features(FeaturesDTO featuresDTO){
-        this.climateSystem = featuresDTO.getClimateSystem();
-        this.naturalLight = featuresDTO.getNaturalLight();
-        this.darkness = featuresDTO.getDarkness();
-        this.scene = featuresDTO.getScene();
-        this.catering = featuresDTO.getCatering();
-        this.restaurant = featuresDTO.getRestaurant();
-        this.parking = featuresDTO.getParking();
-        this.elevator = featuresDTO.getElevator();
-    }
-
-    public Features(Boolean climateSystem, Boolean naturalLight, Boolean darkness, Boolean scene, Boolean catering, Boolean restaurant, Boolean parkings, Boolean elevator) {
+    public FeaturesDTO(Long id, Boolean climateSystem, Boolean naturalLight, Boolean darkness, Boolean scene, Boolean catering, Boolean restaurant, Boolean parking, Boolean elevator) {
+        this.id = id;
         this.climateSystem = climateSystem;
         this.naturalLight = naturalLight;
         this.darkness = darkness;
         this.scene = scene;
         this.catering = catering;
         this.restaurant = restaurant;
-        this.parking = parkings;
+        this.parking = parking;
         this.elevator = elevator;
     }
 
@@ -140,11 +116,4 @@ public class Features {
         this.elevator = elevator;
     }
 
-    public ConferenceRoom getConferenceRoom() {
-        return conferenceRoom;
-    }
-
-    public void setConferenceRoom(ConferenceRoom conferenceRoom) {
-        this.conferenceRoom = conferenceRoom;
-    }
 }

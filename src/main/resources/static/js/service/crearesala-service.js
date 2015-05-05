@@ -1,8 +1,10 @@
-app.service('CrearesalaService', function() {
+app.service('CrearesalaService', function($http) {
+
     this.conferenceroom = new Object();
     this.conferenceroom.fkLocation = new Object();
     this.conferenceroom.fkFeatures = new Object();
     this.conferenceroom.fkEquipment = new Object();
+    this.conferenceroomDTO = undefined;
 
     this.update = function(oldSelect, oldConferenceRoom){
         switch(oldSelect){
@@ -53,5 +55,10 @@ app.service('CrearesalaService', function() {
             }
         }
         return ret;
+    }
+
+    this.copyAndSave = function(){
+        debugger
+
     }
 });

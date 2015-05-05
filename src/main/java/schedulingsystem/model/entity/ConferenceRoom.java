@@ -1,5 +1,7 @@
 package schedulingsystem.model.entity;
 
+import schedulingsystem.model.dto.ConferenceRoomDTO;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -35,6 +37,14 @@ public class ConferenceRoom {
     private Equipment fkEquipment;
 
     public ConferenceRoom() {
+
+    }
+
+    public ConferenceRoom(ConferenceRoomDTO conferenceRoomDTO){
+        this.name = conferenceRoomDTO.getName();
+        this.setPlacesNumber(conferenceRoomDTO.getPlacesNumber());
+        this.setSurface(conferenceRoomDTO.getSurface());
+
 
     }
 
