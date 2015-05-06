@@ -40,12 +40,13 @@ public class ConferenceRoom {
 
     }
 
-    public ConferenceRoom(ConferenceRoomDTO conferenceRoomDTO){
+    public ConferenceRoom(ConferenceRoomDTO conferenceRoomDTO, Long equipmentId, Long featuresId, Long locationId){
         this.name = conferenceRoomDTO.getName();
-        this.setPlacesNumber(conferenceRoomDTO.getPlacesNumber());
-        this.setSurface(conferenceRoomDTO.getSurface());
-
-
+        this.placesNumber = conferenceRoomDTO.getPlacesNumber();
+        this.surface = conferenceRoomDTO.getSurface();
+//        this.setFkEquipment(equipmentId);
+//        this.setFkFeatures(featuresId);
+//        this.setFkLocation(locationId);
     }
 
     public ConferenceRoom(String name, Integer placesNumber, Integer surface, Location fkLocation, Features fkFeatures, Equipment fkEquipment) {

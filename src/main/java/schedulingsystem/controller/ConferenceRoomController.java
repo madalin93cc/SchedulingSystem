@@ -36,7 +36,6 @@ public class ConferenceRoomController {
 
     @RequestMapping(value = "/add/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
     public ConferenceRoom addConferenceRoom(@RequestBody ConferenceRoomDTO body){
-
-        return new ConferenceRoom();
+        return conferenceRoomService.saveConferenceRoom(body);
     }
 }
