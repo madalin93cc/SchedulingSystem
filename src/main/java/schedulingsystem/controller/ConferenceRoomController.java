@@ -12,6 +12,8 @@ import schedulingsystem.model.entity.*;
 import schedulingsystem.model.service.ConferenceRoomService;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Colezea on 30/04/2015.
@@ -37,5 +39,21 @@ public class ConferenceRoomController {
     @RequestMapping(value = "/add/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
     public ConferenceRoom addConferenceRoom(@RequestBody ConferenceRoomDTO body){
         return conferenceRoomService.saveConferenceRoom(body);
+    }
+
+    @RequestMapping(value = "/rezervasala/cityes", method = RequestMethod.GET)
+    public List<String> getCityes(){
+        List<String> cityes = new ArrayList<>();
+        cityes.add("city1");
+        cityes.add("city2");
+        return cityes;
+    }
+
+    @RequestMapping(value = "/rezervasala/capacityes", method = RequestMethod.GET)
+    public List<Integer> getCapacityes(){
+        List<Integer> capacityes = new ArrayList<>();
+        capacityes.add(1);
+        capacityes.add(2);
+        return capacityes;
     }
 }

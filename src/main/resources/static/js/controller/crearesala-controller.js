@@ -76,6 +76,5 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'Cr
             }).error(function() {
             });
         });
-        //CrearesalaService.copyAndSave()
     }
 }]);

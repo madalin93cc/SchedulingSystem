@@ -11,13 +11,13 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Localitate</label>
                 <div class="col-xs-5 selectContainer">
-                    <select name="Orase" class="form-control">
-                        <option value=""></option>
-                        <option value="Bucuresti">Bucuresti</option>
-                        <option value="Iasi">Iasi</option>
-                        <option value="Constanta">Constanta</option>
-                        <option value="Timisoara">Timisoara</option>
-                        <option value="Cluj">Cluj</option>
+                    <select name="Orase" class="form-control" ng-options="item for item in cityes">
+                        <option value="">Selecteaza localitate</option>
+                        <!--<option value="Bucuresti">Bucuresti</option>-->
+                        <!--<option value="Iasi">Iasi</option>-->
+                        <!--<option value="Constanta">Constanta</option>-->
+                        <!--<option value="Timisoara">Timisoara</option>-->
+                        <!--<option value="Cluj">Cluj</option>-->
                     </select>
                 </div>
             </div>
@@ -206,7 +206,7 @@
             <div class="control-group">
             <!-- Button -->
                 <div class="controls">
-                    <button class="btn btn-success">Caută</button>
+                    <button ng-click="reserveRoom()" class="btn btn-success">Caută</button>
                 </div>
             </div>
 
