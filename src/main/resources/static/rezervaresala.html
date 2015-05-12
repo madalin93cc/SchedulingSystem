@@ -11,8 +11,8 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Localitate</label>
                 <div class="col-xs-5 selectContainer">
-                    <select name="Orase" class="form-control" ng-options="item for item in cityes">
-                        <option value="">Selecteaza localitate</option>
+                    <select ng-model="searchRoom.city" name="Orase" class="form-control" data-ng-options="item for item in cityes">
+                        <option value=""></option>
                         <!--<option value="Bucuresti">Bucuresti</option>-->
                         <!--<option value="Iasi">Iasi</option>-->
                         <!--<option value="Constanta">Constanta</option>-->
@@ -24,13 +24,13 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Capacitate</label>
                 <div class="col-xs-5 selectContainer">
-                    <select name="Orase" class="form-control">
+                    <select ng-model="searchRoom.capacity" name="Orase" class="form-control" data-ng-options="item for item in capacityes">
                         <option value=""></option>
-                        <option value="0-50">0-50</option>
-                        <option value="51-100">51-100</option>
-                        <option value="101-200">101-200</option>
-                        <option value="201-300">201-300</option>
-                        <option value="peste 300">peste 300</option>
+                        <!--<option value="0-50">0-50</option>-->
+                        <!--<option value="51-100">51-100</option>-->
+                        <!--<option value="101-200">101-200</option>-->
+                        <!--<option value="201-300">201-300</option>-->
+                        <!--<option value="peste 300">peste 300</option>-->
                     </select>
                 </div>
             </div>
