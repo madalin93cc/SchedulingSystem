@@ -51,7 +51,7 @@
                                 <!-- Denumire locatie/hotel -->
                                 <label class="control-label"  for="denumire2">Denumire locatie/Hotel</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.name" type="text" id="denumire2" name="denumire" placeholder="" class="input-xlarge">
+                                    <input pattern="[A-Za-z 1-9]{1,15}" ng-required="true" ng-model="conferenceroom.name" type="text" id="denumire2" name="denumire" placeholder="" >
                                 </div>
                             </div>
 
@@ -59,7 +59,7 @@
                                 <!-- Oras-->
                                 <label class="control-label" for="oras">Oras</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.city"type="text" id="oras" name="oras" placeholder="" class="input-xlarge">
+                                    <input pattern="[A-Za-z ]{1,15}" ng-required="true" ng-model="conferenceroom.city"type="text" id="oras" name="oras" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
@@ -67,7 +67,7 @@
                                 <!-- Sector -->
                                 <label class="control-label" for="sector">Sector</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.sector" type="text" id="sector" name="sector" placeholder="" class="input-xlarge">
+                                    <input pattern="[1-9]{1}" ng-required="true" ng-model="conferenceroom.sector" type="text" id="sector" name="sector" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
