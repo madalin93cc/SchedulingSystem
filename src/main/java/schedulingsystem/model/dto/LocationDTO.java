@@ -4,11 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Madalin.Colezea on 5/5/2015.
  */
-public class LocationDTO {
+public class LocationDTO implements Serializable{
 
     private Long id;
 
