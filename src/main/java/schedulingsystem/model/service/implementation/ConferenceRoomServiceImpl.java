@@ -38,6 +38,10 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
 
     @Override
     public ConferenceRoom saveConferenceRoom(ConferenceRoomDTO conferenceRoomDTO) {
+        String bigCity = conferenceRoomDTO.getFkLocation().getCity();
+        bigCity.trim();
+        bigCity = bigCity.substring(0,1).toUpperCase() + bigCity.substring(1).toLowerCase();
+        conferenceRoomDTO.getFkLocation().setCity(bigCity);
         Equipment equipment = new Equipment(conferenceRoomDTO.getFkEquipment());
         Features features = new Features(conferenceRoomDTO.getFkFeatures());
         Location location = new Location(conferenceRoomDTO.getFkLocation());

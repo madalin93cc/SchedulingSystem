@@ -53,6 +53,12 @@ public class ConferenceRoomController {
         return conferenceRoomService.saveConferenceRoom(body);
     }
 
+    @RequestMapping(value = "/add/searchconferenceroom", method = RequestMethod.POST, produces ="application/json")
+    public boolean searchConferenceRoom (@RequestBody SearchConferenceRoomDTO body){
+        return true;
+        //return conferenceRoomService.getSearchResult(body);
+    }
+
     @RequestMapping(value = "/rezervasala/cityes", method = RequestMethod.GET)
     public List<String> getCityes(){
         return locationService.getAllCityes();
