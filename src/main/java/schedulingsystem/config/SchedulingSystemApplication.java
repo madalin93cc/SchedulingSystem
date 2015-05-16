@@ -25,12 +25,12 @@ public class SchedulingSystemApplication {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .httpBasic().and()
-                    .authorizeRequests()
-                    .antMatchers("/account.html", "/index.html", "/home.html", "/login.html", "/").permitAll().anyRequest()
-                    .authenticated().and()
+                    //.authorizeRequests()
+                    //.antMatchers("/account.html", "/index.html", "/home.html", "/login.html", "/").permitAll().anyRequest()
+                    //.authenticated().and()
                     .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
-                    .csrf().csrfTokenRepository(csrfTokenRepository())
-                    .and().logout();
+                    .csrf().csrfTokenRepository(csrfTokenRepository());
+                    //.and().logout();
         }
     }
 

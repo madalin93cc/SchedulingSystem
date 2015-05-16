@@ -6,7 +6,6 @@ import schedulingsystem.model.service.LocationService;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.HashSet;
 import java.util.List;
 
 /**

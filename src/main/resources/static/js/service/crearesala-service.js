@@ -57,8 +57,4 @@ app.service('CrearesalaService', function($http) {
         return ret;
     }
 
-    this.copyAndSave = function(){
-        debugger
-
-    }
 });
