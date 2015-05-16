@@ -4,10 +4,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import schedulingsystem.model.dto.ConferenceRoomDTO;
-import schedulingsystem.model.dto.EquipmentDTO;
-import schedulingsystem.model.dto.FeaturesDTO;
-import schedulingsystem.model.dto.LocationDTO;
+import schedulingsystem.model.dto.*;
 import schedulingsystem.model.entity.*;
 import schedulingsystem.model.service.ConferenceRoomService;
 
@@ -34,6 +31,17 @@ public class ConferenceRoomController {
         conferenceRoom.setFkEquipment(equipmentDTO);
         conferenceRoom.setFkLocation(locationDTO);
         return conferenceRoom;
+    }
+
+    @RequestMapping(value = "/get/newsearchconferenceroom/", method = RequestMethod.GET)
+    public SearchConferenceRoomDTO getSearchConferenceRoomDTO(){
+        SearchConferenceRoomDTO searchConferenceRoomDTO = new SearchConferenceRoomDTO();
+        FeaturesDTO featuresDTO = new FeaturesDTO();
+        EquipmentDTO equipmentDTO = new EquipmentDTO();
+        searchConferenceRoomDTO.setEquipmentDTO(equipmentDTO);
+        searchConferenceRoomDTO.setFeaturesDTO(featuresDTO);
+
+        return searchConferenceRoomDTO;
     }
 
     @RequestMapping(value = "/add/conferenceroom/", method = RequestMethod.POST, produces ="application/json")

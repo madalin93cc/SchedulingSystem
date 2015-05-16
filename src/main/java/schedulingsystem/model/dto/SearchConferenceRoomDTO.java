@@ -26,4 +26,44 @@ public class SearchConferenceRoomDTO implements Serializable{
         this.featuresDTO = featuresDTO;
         this.equipmentDTO = equipmentDTO;
     }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public FeaturesDTO getFeaturesDTO() {
+        return featuresDTO;
+    }
+
+    public void setFeaturesDTO(FeaturesDTO featuresDTO) {
+        this.featuresDTO = featuresDTO;
+    }
+
+    public EquipmentDTO getEquipmentDTO() {
+        return equipmentDTO;
+    }
+
+    public void setEquipmentDTO(EquipmentDTO equipmentDTO) {
+        this.equipmentDTO = equipmentDTO;
+    }
 }
