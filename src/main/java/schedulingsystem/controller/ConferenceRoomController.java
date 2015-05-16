@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import schedulingsystem.model.dto.*;
 import schedulingsystem.model.entity.*;
 import schedulingsystem.model.service.ConferenceRoomService;
+import schedulingsystem.model.service.LocationService;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ public class ConferenceRoomController {
 
     @Inject
     private ConferenceRoomService conferenceRoomService;
+
+    @Inject
+    private LocationService locationService;
 
     @RequestMapping(value = "/get/newconferenceroom/", method = RequestMethod.GET)
     public ConferenceRoomDTO getNewConferenceRoom(){
@@ -51,17 +55,11 @@ public class ConferenceRoomController {
 
     @RequestMapping(value = "/rezervasala/cityes", method = RequestMethod.GET)
     public List<String> getCityes(){
-        List<String> cityes = new ArrayList<>();
-        cityes.add("city1");
-        cityes.add("city2");
-        return cityes;
+        return locationService.getAllCityes();
     }
 
     @RequestMapping(value = "/rezervasala/capacityes", method = RequestMethod.GET)
-    public List<Integer> getCapacityes(){
-        List<Integer> capacityes = new ArrayList<>();
-        capacityes.add(1);
-        capacityes.add(2);
-        return capacityes;
+    public List<String> getCapacityes(){
+        return conferenceRoomService.getAllCapacityes();
     }
 }

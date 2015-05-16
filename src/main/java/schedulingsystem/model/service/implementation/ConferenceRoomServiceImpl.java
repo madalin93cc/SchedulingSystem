@@ -14,6 +14,8 @@ import schedulingsystem.model.service.ConferenceRoomService;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Colezea on 28/04/2015.
@@ -49,5 +51,17 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         conferenceRoom.setFkFeatures(features1);
         conferenceRoom.setFkEquipment(equipment1);
         return conferenceRoomRepository.save(conferenceRoom);
+    }
+
+    @Override
+    public List<String> getAllCapacityes() {
+        List<String> capacityes = new ArrayList<>();
+        capacityes.add("< 50");
+        capacityes.add("50 - 100");
+        capacityes.add("101 - 150");
+        capacityes.add("151 - 250");
+        capacityes.add("251 - 500");
+        capacityes.add(("> 500"));
+        return capacityes;
     }
 }

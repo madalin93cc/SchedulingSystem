@@ -25,15 +25,15 @@ public class ConferenceRoom {
     private Integer surface;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_conferenceroom_location"), name = "location_id", unique = true, nullable = false, updatable = true)
     private Location fkLocation;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_conferenceroom_features"), name = "features_id", unique = true, nullable = false, updatable = true)
     private Features fkFeatures;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "id", unique = true, nullable = false, updatable = true)
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_conferenceroom_equipment"), name = "equipment_id", unique = true, nullable = false, updatable = true)
     private Equipment fkEquipment;
 
     public ConferenceRoom() {
