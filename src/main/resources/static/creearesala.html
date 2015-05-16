@@ -22,15 +22,15 @@
                                 <!-- Denumire sala -->
                                 <label class="control-label"  for="denumire1">Denumire sala</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.name" type="text" id="denumire1" name="denumire" placeholder="" class="input-xlarge">
+                                    <input pattern="[A-Za-z 1-9]{5,20}" ng-required="true" ng-model="conferenceroom.name" type="text" id="denumire1" name="denumire" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <!-- Suprafata sala-->
-                                <label class="control-label" for="suprafata">Suprafata sala</label>
+                                <label class="control-label" for="suprafata">Suprafata sala (m²)</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.surface" type="text" id="suprafata" name="suprafata" placeholder="" class="input-xlarge">
+                                    <input pattern="[1-9[0-9]*" ng-required="true" ng-model="conferenceroom.surface" type="text" id="suprafata" name="suprafata" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
@@ -38,7 +38,7 @@
                                 <!-- Numar locuri-->
                                 <label class="control-label" for="locuri">Numar locuri</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.placesNumber" type="text" id="locuri" name="locuri" placeholder="" class="input-xlarge">
+                                    <input pattern="[1-9[0-9]*" ng-required="true" ng-model="conferenceroom.placesNumber" type="text" id="locuri" name="locuri" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
                         </fieldset>
@@ -51,7 +51,7 @@
                                 <!-- Denumire locatie/hotel -->
                                 <label class="control-label"  for="denumire2">Denumire locatie/Hotel</label>
                                 <div class="controls">
-                                    <input pattern="[A-Za-z 1-9]{1,15}" ng-required="true" ng-model="conferenceroom.name" type="text" id="denumire2" name="denumire" placeholder="" >
+                                    <input pattern="[A-Za-z 1-9]{5,20}" ng-required="true" ng-model="conferenceroom.name" type="text" id="denumire2" name="denumire" placeholder="" >
                                 </div>
                             </div>
 
@@ -75,7 +75,7 @@
                                 <!-- Strada -->
                                 <label class="control-label" for="strada">Strada</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.street" type="text" id="strada" name="strada" placeholder="" class="input-xlarge">
+                                    <input pattern="[A-Za-z 1-9]{1,20}" ng-required="true"  ng-model="conferenceroom.street" type="text" id="strada" name="strada" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@
                                 <!-- Etaj -->
                                 <label class="control-label" for="strada">Etaj</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.floor" type="text" id="etaj" name="etaj" placeholder="" class="input-xlarge">
+                                    <input pattern="[1-9][0-9]*" ng-required="true" ng-model="conferenceroom.floor" type="text" id="etaj" name="etaj" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
@@ -91,7 +91,7 @@
                                 <!-- Numar -->
                                 <label class="control-label" for="numar">Numar</label>
                                 <div class="controls">
-                                    <input ng-model="conferenceroom.streetNumber" type="text" id="numar" name="numar" placeholder="" class="input-xlarge">
+                                    <input pattern="[1-9][0-9]*" ng-required="true" ng-model="conferenceroom.streetNumber" type="text" id="numar" name="numar" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
