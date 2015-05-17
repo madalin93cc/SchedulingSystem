@@ -1,0 +1,252 @@
+<link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
+
+<div class="" id="loginModal">
+    <div class="modal-header">
+        <h1>Titlu</h1>
+    </div>
+    <div class="container">
+        <br>
+        <div class="well">
+
+            <form id="bootstrapSelectForm" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Lista sali</label>
+                    <div class="col-xs-8 selectContainer">
+                        <select name="Orase" class="form-control" ng-model="selroom">
+                            <option value=""></option>
+                            <option value="1">Localitatea, Sala, Data, Perioada</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+</div>
+</div>
+</div>
+
+            <br>
+
+<div class="">
+<div class="container">
+<div class="well">
+
+            <div ng-show="selroom">
+                <ul class="nav nav-tabs">
+                <li ng-click="changeSelected(1)" ng-class="{active: selected==1}"><a href="#editaresala/#date" data-toggle="tab">Date generale</a></li>
+                <li ng-click="changeSelected(2)" ng-class="{active: selected==2}"><a href="#editaresala/#locatie" data-toggle="tab">Locatie</a></li>
+                <li ng-click="changeSelected(3)" ng-class="{active: selected==3}"><a href="#editaresala/#facilitati" data-toggle="tab">Facilitati</a></li>
+                <li ng-click="changeSelected(4)" ng-class="{active: selected==4}"><a href="#editaresala/#echipamente" data-toggle="tab">Echipamente</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="date">
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                            <div class="control-group">
+                                <!-- Denumire sala -->
+                                <label class="control-label"  for="denumire1">Denumire sala</label>
+                                <div class="controls">
+                                    <input pattern="[A-Za-z 1-9]{5,20}" ng-required="true" ng-model="conferenceroom.name" type="text" id="denumire1" name="denumire" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Suprafata sala-->
+                                <label class="control-label" for="suprafata">Suprafata sala (m²)</label>
+                                <div class="controls">
+                                    <input pattern="[1-9[0-9]*" ng-required="true" ng-model="conferenceroom.surface" type="text" id="suprafata" name="suprafata" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Numar locuri-->
+                                <label class="control-label" for="locuri">Numar locuri</label>
+                                <div class="controls">
+                                    <input pattern="[1-9[0-9]*" ng-required="true" ng-model="conferenceroom.placesNumber" type="text" id="locuri" name="locuri" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="locatie">
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                            <div class="control-group">
+                                <!-- Denumire locatie/hotel -->
+                                <label class="control-label"  for="denumire2">Denumire locatie/Hotel</label>
+                                <div class="controls">
+                                    <input pattern="[A-Za-z 1-9]{5,20}" ng-required="true" ng-model="conferenceroom.name" type="text" id="denumire2" name="denumire" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Oras-->
+                                <label class="control-label" for="oras">Oras</label>
+                                <div class="controls">
+                                    <input pattern="[A-Za-z ]{1,15}" ng-required="true" ng-model="conferenceroom.city"type="text" id="oras" name="oras" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Sector -->
+                                <label class="control-label" for="sector">Sector</label>
+                                <div class="controls">
+                                    <input pattern="[1-9]{1}" ng-required="true" ng-model="conferenceroom.sector" type="text" id="sector" name="sector" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Strada -->
+                                <label class="control-label" for="strada">Strada</label>
+                                <div class="controls">
+                                    <input pattern="[A-Za-z 1-9]{1,20}" ng-required="true"  ng-model="conferenceroom.street" type="text" id="strada" name="strada" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Etaj -->
+                                <label class="control-label" for="strada">Etaj</label>
+                                <div class="controls">
+                                    <input pattern="[1-9][0-9]*" ng-required="true" ng-model="conferenceroom.floor" type="text" id="etaj" name="etaj" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Numar -->
+                                <label class="control-label" for="numar">Numar</label>
+                                <div class="controls">
+                                    <input pattern="[1-9][0-9]*" ng-required="true" ng-model="conferenceroom.streetNumber" type="text" id="numar" name="numar" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <!-- Indicatii -->
+                                <label class="control-label" for="numar">Indicatii de orientare</label>
+                                <div class="controls">
+                                    <textarea ng-model="conferenceroom.indication" class="field span4" rows="3" id="indicatii" name="indicatii"></textarea>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="facilitati">
+                    <!--<form id="tab">-->
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-model="conferenceroom.climateSystem" type="checkbox" value="">
+                                    Aer conditionat
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.naturalLight" type="checkbox" value="">
+                                    Lumina naturala
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.darkness" type="checkbox" value="">
+                                    Intunecare
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.scene" type="checkbox" value="">
+                                    Scena la prezidiu
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.catering" type="checkbox" value="">
+                                    Servicii catering
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.restaurant" type="checkbox" value="">
+                                    Restaurant
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.parking" type="checkbox" value="">
+                                    Parcare
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.elevator" type="checkbox" value="">
+                                    Lift
+                                </label>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="echipamente">
+                    <!--<form id="tab">-->
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-model="conferenceroom.wireless" type="checkbox" value="">
+                                    Acces internet wireless
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.videoprojector" type="checkbox" value="">
+                                    Videoproiector
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.laserpointer" type="checkbox" value="">
+                                    Laser pointer
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.projectionScreen" type="checkbox" value="">
+                                    Ecran pentru proiectii
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.flipchart" type="checkbox" value="">
+                                    Flipchart, hartie, markere
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.whiteboard" type="checkbox" value="">
+                                    Whiteboard
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.soundsystem" type="checkbox" value="">
+                                    Sonorizare
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.microphones" type="checkbox" value="">
+                                    Microfoane
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.tv" type="checkbox" value="">
+                                    Plasma tv/LCD
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.videoconference" type="checkbox" value="">
+                                    Video conferinta
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.recordAV" type="checkbox" value="">
+                                    Inregistrare audio-video
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.laptop" type="checkbox" value="">
+                                    Laptop, PC
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.printer" type="checkbox" value="">
+                                    Imprimanta, copiator, fax
+                                </label>
+                                <label>
+                                    <input ng-model="conferenceroom.translator" type="checkbox" value="">
+                                    Translator
+                                </label>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <!-- Button -->
+                            <div class="controls">
+                                <button ng-click="saveConferenceRoom()" class="btn btn-success">Salveaza</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,9 @@ app.config(function($routeProvider, $httpProvider) {
     }).when('/creearesala', {
         templateUrl : 'creearesala.html',
         controller: 'creearesala'
+    }).when('/editaresala', {
+        templateUrl : 'editaresala.html',
+        controller: 'editaresala'
     }).when('/rezervaresala', {
         templateUrl : 'rezervaresala.html',
         controller: 'rezervaresala'
