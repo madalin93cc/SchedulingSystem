@@ -23,18 +23,36 @@ app.controller('navigation', function($rootScope, $scope, $http, $location) {
     authenticate();
     $scope.credentials = {};
     $scope.login = function() {
-        authenticate($scope.credentials, function() {
-            if ($rootScope.authenticated) {
-                $location.path("/");
-                $scope.error = false;
-            } else {
-                $location.path("/login");
-                $scope.error = true;
-            }
+        debugger
+        $http.get('/get/newcredentials').success(function(data) {
+            data.username = $scope.credentialsDTO.username;
+            data.password = $scope.credentialsDTO.password;
+            $http.post('/loginUser', data).success(function(data2) {
+                console.log(data2);
+                if (data2 == ""){
+                    $scope.error = true;
+                    $rootScope.authenticated = false;
+                }
+                else {
+                    $scope.error = false;
+                    $rootScope.authenticated = true;
+                    $location.path("/");
+                }
+            }).error(function() {
+            });
         });
+//        authenticate($scope.credentials, function() {
+//            if ($rootScope.authenticated) {
+//                $location.path("/");
+//                $scope.error = false;
+//            } else {
+//                $location.path("/login");
+//                $scope.error = true;
+//            }
+//        });
     };
     $scope.logout = function() {
-        $http.post('logout', {}).success(function() {
+        $http.get('/logout', {}).success(function() {
             $rootScope.authenticated = false;
             $location.path("/");
         }).error(function(data) {

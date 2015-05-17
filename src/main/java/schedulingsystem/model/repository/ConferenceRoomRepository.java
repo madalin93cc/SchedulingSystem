@@ -10,5 +10,5 @@ import schedulingsystem.model.entity.ConferenceRoom;
 @Repository
 public interface ConferenceRoomRepository extends JpaRepository<ConferenceRoom, Long> {
 
-    public ConferenceRoom findByName();
+    public ConferenceRoom findByName(String name);
 }

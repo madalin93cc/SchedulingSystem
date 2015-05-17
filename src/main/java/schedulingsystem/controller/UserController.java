@@ -1,10 +1,10 @@
 package schedulingsystem.controller;
 
+import org.springframework.data.authentication.UserCredentials;
 import org.springframework.http.HttpMethod;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import schedulingsystem.config.SchedulingSystemApplication;
+import schedulingsystem.model.dto.CredentialsDTO;
 import schedulingsystem.model.entity.User;
 import schedulingsystem.model.service.UserService;
 import schedulingsystem.utils.RequestMappingEnum;
@@ -31,5 +31,26 @@ public class UserController {
                               @PathVariable("password") String password,
                               @PathVariable("type") String type){
         return userService.createAccount(firstName, lastName, username, password, type);
+    }
+
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST, produces = "application/json")
+    public User login(@RequestBody CredentialsDTO credentialsDTO){
+        return userService.login(credentialsDTO);
+    }
+
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET, produces = "application/json")
+    public User getUser(){
+        return SchedulingSystemApplication.userLoged;
+    }
+
+    @RequestMapping(value = "/get/newcredentials", method = RequestMethod.GET, produces = "application/json")
+    public CredentialsDTO getUserCredentials(){
+        return new CredentialsDTO();
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET, produces = "application/json")
+    public Boolean logout(){
+        SchedulingSystemApplication.userLoged = null;
+        return true;
     }
 }

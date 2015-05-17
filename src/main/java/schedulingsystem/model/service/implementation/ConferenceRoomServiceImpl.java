@@ -1,6 +1,7 @@
 package schedulingsystem.model.service.implementation;
 
 import org.springframework.stereotype.Service;
+import schedulingsystem.config.SchedulingSystemApplication;
 import schedulingsystem.model.dto.ConferenceRoomDTO;
 import schedulingsystem.model.entity.ConferenceRoom;
 import schedulingsystem.model.entity.Equipment;
@@ -54,6 +55,7 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         conferenceRoom.setFkLocation(location1);
         conferenceRoom.setFkFeatures(features1);
         conferenceRoom.setFkEquipment(equipment1);
+        conferenceRoom.setFkOwner(SchedulingSystemApplication.userLoged);
         return conferenceRoomRepository.save(conferenceRoom);
     }
 

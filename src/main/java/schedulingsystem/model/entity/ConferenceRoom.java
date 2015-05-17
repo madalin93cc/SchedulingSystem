@@ -36,6 +36,10 @@ public class ConferenceRoom {
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_conferenceroom_equipment"), name = "equipment_id", unique = true, nullable = false, updatable = true)
     private Equipment fkEquipment;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", unique = false, nullable = false, updatable = true)
+    private User fkOwner;
+
     public ConferenceRoom() {
 
     }
@@ -46,13 +50,14 @@ public class ConferenceRoom {
         this.surface = conferenceRoomDTO.getSurface();
     }
 
-    public ConferenceRoom(String name, Integer placesNumber, Integer surface, Location fkLocation, Features fkFeatures, Equipment fkEquipment) {
+    public ConferenceRoom(String name, Integer placesNumber, Integer surface, Location fkLocation, Features fkFeatures, Equipment fkEquipment, User fkOwner) {
         this.name = name;
         this.placesNumber = placesNumber;
         this.surface = surface;
         this.fkLocation = fkLocation;
         this.fkFeatures = fkFeatures;
         this.fkEquipment = fkEquipment;
+        this.fkOwner = fkOwner;
     }
 
     public Long getId() {
@@ -109,5 +114,13 @@ public class ConferenceRoom {
 
     public void setFkEquipment(Equipment fkEquipment) {
         this.fkEquipment = fkEquipment;
+    }
+
+    public User getFkOwner() {
+        return fkOwner;
+    }
+
+    public void setFkOwner(User fkOwner) {
+        this.fkOwner = fkOwner;
     }
 }

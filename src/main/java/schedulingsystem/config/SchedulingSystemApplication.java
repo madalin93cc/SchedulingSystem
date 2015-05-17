@@ -10,10 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import schedulingsystem.model.entity.User;
 
 @SpringBootApplication
 public class SchedulingSystemApplication {
-
+    public static User userLoged;
     public static void main(String[] args) {
         SpringApplication.run(SchedulingSystemApplication.class, args);
     }

@@ -1,6 +1,8 @@
 package schedulingsystem.model.service.implementation;
 
 import org.springframework.stereotype.Service;
+import schedulingsystem.config.SchedulingSystemApplication;
+import schedulingsystem.model.dto.CredentialsDTO;
 import schedulingsystem.model.entity.User;
 import schedulingsystem.model.repository.UserRepository;
 import schedulingsystem.model.service.UserService;
@@ -50,5 +52,16 @@ public class UserServiceImpl implements UserService{
         else {
             return true;
         }
+    }
+
+    @Override
+    public User login(CredentialsDTO credentialsDTO) {
+        List<User> user = userRepository.findByUsername(credentialsDTO.getUsername());
+        if (user.size() == 0) return null;
+        else {
+            if (user.get(0).getPassword().compareTo(credentialsDTO.getPassword()) != 0) return null;
+        }
+        SchedulingSystemApplication.userLoged = user.get(0);
+        return user.get(0);
     }
 }
