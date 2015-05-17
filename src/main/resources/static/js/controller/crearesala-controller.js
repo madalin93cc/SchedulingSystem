@@ -32,7 +32,6 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'Cr
 
     $scope.saveConferenceRoom = function () {
         CrearesalaService.update($rootScope.selected, $scope.conferenceroom);
-        debugger
         $http.get('/get/newconferenceroom/').success(function(data) {
             $scope.conferenceroomDTO = data;
             $scope.conferenceroomDTO.name = CrearesalaService.conferenceroom.name;

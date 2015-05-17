@@ -44,9 +44,6 @@ public class ConferenceRoom {
         this.name = conferenceRoomDTO.getName();
         this.placesNumber = conferenceRoomDTO.getPlacesNumber();
         this.surface = conferenceRoomDTO.getSurface();
-//        this.setFkEquipment(equipmentId);
-//        this.setFkFeatures(featuresId);
-//        this.setFkLocation(locationId);
     }
 
     public ConferenceRoom(String name, Integer placesNumber, Integer surface, Location fkLocation, Features fkFeatures, Equipment fkEquipment) {

@@ -23,6 +23,6 @@ app.config(function($routeProvider, $httpProvider) {
         controller: 'statuscereri'
     }).otherwise('/');
 
-//    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
 });

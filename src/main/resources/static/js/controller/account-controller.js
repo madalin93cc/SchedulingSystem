@@ -7,7 +7,6 @@ app.controller('account', function($scope, $http, $location) {
             + user.type;
 
         $http.post($scope.url, {}).success(function(data) {
-            debugger;
             if (data == ""){
                 $scope.createMessage = "Cont deja existent."
                 $scope.confMessage = "A aparut o eroare"

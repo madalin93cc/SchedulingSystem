@@ -19,14 +19,8 @@ app.controller('rezervaresala', function($scope, $http) {
         $scope.capacityes = result;
     });
 
-//    $scope.reserveRoom = function(){
-//        console.log($scope.searchRoom);
-//        debugger
-//    }
-
     $scope.reserveRoom = function() {
         $http.get('/get/newsearchconferenceroom/').success(function(data) {
-            debugger
             $scope.searchConferenceRoomDTO = data;
             $scope.searchConferenceRoomDTO.location = $scope.searchRoom.city;
             if($scope.searchRoom.capacity == '< 50')
@@ -69,7 +63,6 @@ app.controller('rezervaresala', function($scope, $http) {
             $scope.searchConferenceRoomDTO.equipmentDTO.translator = $scope.searchRoom.translator;
 
             $http.post('/add/searchconferenceroom', $scope.searchConferenceRoomDTO).success(function(data2) {
-                debugger
                 console.log(data2);
             }).error(function() {
             });
