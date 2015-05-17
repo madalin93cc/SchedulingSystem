@@ -23,7 +23,6 @@ app.controller('navigation', function($rootScope, $scope, $http, $location) {
     authenticate();
     $scope.credentials = {};
     $scope.login = function() {
-        debugger
         $http.get('/get/newcredentials').success(function(data) {
             data.username = $scope.credentialsDTO.username;
             data.password = $scope.credentialsDTO.password;
@@ -37,6 +36,7 @@ app.controller('navigation', function($rootScope, $scope, $http, $location) {
                     $scope.error = false;
                     $rootScope.authenticated = true;
                     $location.path("/");
+                    $rootScope.userType = data2.type;
                 }
             }).error(function() {
             });
@@ -61,5 +61,13 @@ app.controller('navigation', function($rootScope, $scope, $http, $location) {
     };
     $scope.createaccount = function() {
         $location.path("/account");
+    }
+
+    $scope.getShow1 = function() {
+        return ($rootScope.authenticated) == true && ($rootScope.userType == 1);
+    }
+
+    $scope.getShow0 = function() {
+        return ($rootScope.authenticated) == true && ($rootScope.userType == 0);
     }
 });

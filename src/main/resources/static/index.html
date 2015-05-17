@@ -18,12 +18,12 @@
 <div ng-controller="navigation" class="container">
     <ul class="nav nav-pills" role="tablist" style="background-color:#ab0c0c" align="center">
         <li class="inactive"><a href="#/" style="color:#000000; font-size:20px; font-family:'courier'"><b>Welcome</b></a></li>
-        <li class="inactive"><a href="#/login" style="color:#000000; font-size:20px; font-family:'courier'"><b>Login</b></a></li>
-        <li class="inactive"><a href="#/creearesala" style="color:#000000; font-size:20px; font-family:'courier'"><b>Crearesala</b></a></li>
-        <li class="inactive"><a href="#/editaresala" style="color:#000000; font-size:20px; font-family:'courier'"><b>Editare/Vizualizare sala</b></a></li>
-        <li class="inactive"><a href="#/rezervaresala" style="color:#000000; font-size:20px; font-family:'courier'"><b>Rezervaresala</b></a></li>
-        <li class="inactive"><a href="#/confirmarecereri" style="color:#000000; font-size:20px; font-family:'courier'"><b>Confirmarecereri</b></a></li>
-        <li class="inactive"><a href="#/statuscereri" style="color:#000000; font-size:20px; font-family:'courier'"><b>Status cereri</b></a></li>
+        <li ng-show="!authenticated"class="inactive"><a href="#/login" style="color:#000000; font-size:20px; font-family:'courier'"><b>Login</b></a></li>
+        <li ng-show="getShow1()" class="inactive"><a href="#/creearesala" style="color:#000000; font-size:20px; font-family:'courier'"><b>Crearesala</b></a></li>
+        <li ng-show="getShow1()" class="inactive"><a href="#/editaresala" style="color:#000000; font-size:20px; font-family:'courier'"><b>Editare/Vizualizare sala</b></a></li>
+        <li ng-show="getShow0()" class="inactive"><a href="#/rezervaresala" style="color:#000000; font-size:20px; font-family:'courier'"><b>Rezervaresala</b></a></li>
+        <li ng-show="getShow1()" class="inactive"><a href="#/confirmarecereri" style="color:#000000; font-size:20px; font-family:'courier'"><b>Confirmarecereri</b></a></li>
+        <li ng-show="getShow0()" class="inactive"><a href="#/statuscereri" style="color:#000000; font-size:20px; font-family:'courier'"><b>Status cereri</b></a></li>
         <li ng-show="authenticated"><a href="" ng-click="logout()" style="color:#000000; font-size:20px; font-family:'courier'"><b>Logout</b></a></li>
     </ul>
 </div>

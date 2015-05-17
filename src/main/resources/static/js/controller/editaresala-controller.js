@@ -12,7 +12,6 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
 
 
         $scope.changeSelected = function(sel){
-        debugger
             EditaresalaService.update($rootScope.selected, $scope.conferenceroom, $scope.selectedroom);
             $rootScope.selected = sel;
             switch(sel){
@@ -76,7 +75,6 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
                 $scope.conferenceroomDTO.fkEquipment.translator = EditaresalaService.conferenceroom.fkEquipment.translator;
 
                 $http.post('/add/conferenceroom/', $scope.conferenceroomDTO).success(function(data2) {
-                    console.log(data2);
                     EditaresalaService.conferenceroom = null;
                 }).error(function() {
                 });
