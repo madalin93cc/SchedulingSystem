@@ -24,7 +24,11 @@ app.config(function($routeProvider, $httpProvider) {
     }).when('/statuscereri', {
         templateUrl : 'statuscereri.html',
         controller: 'statuscereri'
+    }).when('/stergerecont', {
+        templateUrl : 'stergerecont.html',
+        controller: 'stergerecont'
     }).otherwise('/');
+
 
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
