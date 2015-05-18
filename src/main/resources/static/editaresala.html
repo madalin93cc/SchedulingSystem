@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Lista sali</label>
                     <div class="col-xs-8 selectContainer">
-                        <select name="Orase" class="form-control" ng-model="selroom">
+                        <select name="Orase" class="form-control" ng-model="selectedroom">
                             <option value=""></option>
                             <option value="1">Localitatea, Sala, Data, Perioada</option>
                         </select>
@@ -30,7 +30,7 @@
 <div class="container">
 <div class="well">
 
-            <div ng-show="selroom">
+            <div ng-show="selectedroom">
                 <ul class="nav nav-tabs">
                 <li ng-click="changeSelected(1)" ng-class="{active: selected==1}"><a href="#editaresala/#date" data-toggle="tab">Date generale</a></li>
                 <li ng-click="changeSelected(2)" ng-class="{active: selected==2}"><a href="#editaresala/#locatie" data-toggle="tab">Locatie</a></li>

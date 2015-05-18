@@ -10,8 +10,12 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
         $scope.conferenceroom = EditaresalaService.load($rootScope.selected);
         $scope.selectedroom = EditaresalaService.selectedroom;
 
+        if($scope.selectedroom == ""){
+            EditaresalaService.conferenceroom = new Object();
+        }
 
         $scope.changeSelected = function(sel){
+            debugger
             EditaresalaService.update($rootScope.selected, $scope.conferenceroom, $scope.selectedroom);
             $rootScope.selected = sel;
             switch(sel){
