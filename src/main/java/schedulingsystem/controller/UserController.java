@@ -53,4 +53,10 @@ public class UserController {
         SchedulingSystemApplication.userLoged = null;
         return true;
     }
+
+    @RequestMapping(value = "/deleteAccount", method = RequestMethod.GET, produces = "application/json")
+    public Boolean deleteAccount(){
+        userService.deleteAccount();
+        return true;
+    }
 }

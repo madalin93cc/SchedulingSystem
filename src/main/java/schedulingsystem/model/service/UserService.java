@@ -11,4 +11,6 @@ public interface UserService {
     public User createAccount(String firstName, String lastName, String username, String password, String type);
 
     public User login(CredentialsDTO credentialsDTO);
+
+    public void deleteAccount();
 }

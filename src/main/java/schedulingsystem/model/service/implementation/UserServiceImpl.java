@@ -64,4 +64,9 @@ public class UserServiceImpl implements UserService{
         SchedulingSystemApplication.userLoged = user.get(0);
         return user.get(0);
     }
+
+    @Override
+    public void deleteAccount() {
+        userRepository.delete(SchedulingSystemApplication.userLoged);
+    }
 }

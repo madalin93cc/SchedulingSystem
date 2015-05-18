@@ -3,6 +3,8 @@ package schedulingsystem.model.service.implementation;
 import org.springframework.stereotype.Service;
 import schedulingsystem.config.SchedulingSystemApplication;
 import schedulingsystem.model.dto.ConferenceRoomDTO;
+import schedulingsystem.model.dto.SearchConferenceRoomDTO;
+import schedulingsystem.model.dto.SearchResultDTO;
 import schedulingsystem.model.entity.ConferenceRoom;
 import schedulingsystem.model.entity.Equipment;
 import schedulingsystem.model.entity.Features;
@@ -69,5 +71,10 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         capacityes.add("251 - 500");
         capacityes.add(("> 500"));
         return capacityes;
+    }
+
+    @Override
+    public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO) {
+        return null;
     }
 }

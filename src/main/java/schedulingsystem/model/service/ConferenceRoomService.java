@@ -1,6 +1,8 @@
 package schedulingsystem.model.service;
 
 import schedulingsystem.model.dto.ConferenceRoomDTO;
+import schedulingsystem.model.dto.SearchConferenceRoomDTO;
+import schedulingsystem.model.dto.SearchResultDTO;
 import schedulingsystem.model.entity.ConferenceRoom;
 
 import java.util.List;
@@ -13,4 +15,6 @@ public interface ConferenceRoomService {
     public ConferenceRoom saveConferenceRoom(ConferenceRoomDTO conferenceRoomDTO);
 
     public List<String> getAllCapacityes();
+
+    public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO);
 }

@@ -54,9 +54,8 @@ public class ConferenceRoomController {
     }
 
     @RequestMapping(value = "/add/searchconferenceroom", method = RequestMethod.POST, produces ="application/json")
-    public boolean searchConferenceRoom (@RequestBody SearchConferenceRoomDTO body){
-        return true;
-        //return conferenceRoomService.getSearchResult(body);
+    public List<SearchResultDTO> searchConferenceRoom (@RequestBody SearchConferenceRoomDTO body){
+        return conferenceRoomService.getSearchResult(body);
     }
 
     @RequestMapping(value = "/rezervasala/cityes", method = RequestMethod.GET)
