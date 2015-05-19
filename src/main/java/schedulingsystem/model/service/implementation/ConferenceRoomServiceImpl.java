@@ -97,7 +97,11 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
 
     @Override
     public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO) {
-        return null;
+        List<SearchResultDTO> searchResultDTOs = new ArrayList<>();
+        searchResultDTOs.add(new SearchResultDTO("sala1", 10, "Buc"));
+        searchResultDTOs.add(new SearchResultDTO("sala1", 20, "Bucu"));
+        searchResultDTOs.add(new SearchResultDTO("sala1", 30, "Bucur"));
+        return searchResultDTOs;
     }
 
     @Override

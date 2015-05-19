@@ -72,8 +72,22 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'Cr
 
             $http.post('/add/conferenceroom/', $scope.conferenceroomDTO).success(function(data2) {
                 console.log(data2);
+                if (data2 == ""){
+                    $scope.createMessage = "Cont deja existent."
+                    $scope.confMessage = "A aparut o eroare"
+                    $("#successPopup").modal('show');
+                    $("#content").css("background-color", "#FFBABA");
+                    $("#content").css("color", "#D8000C");
+                }
+                else{
+                    $scope.createMessage = "Contul a fost creat cu succes."
+                    $scope.confMessage = "Confirmare"
+                    $("#successPopup").modal('show');
+                    $("#content").css("background-color", "#DFF2BF");
+                    $("#content").css("color", "#4F8A10");
+                }
                 CrearesalaService.conferenceroom = null;
-                $location.path("/");
+//                $location.path("/");
             }).error(function() {
             });
         });

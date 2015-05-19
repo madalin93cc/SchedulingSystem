@@ -3,6 +3,24 @@ app.controller('rezervaresala', function($scope, $http) {
     $scope.cityes = [];
     $scope.capacityes = [];
 
+    $scope.companies = [
+        { 'name':'Infosys Technologies',
+            'employees': 125000,
+            'headoffice': 'Bangalore'},
+        { 'name':'Cognizant Technologies',
+            'employees': 100000,
+            'headoffice': 'Bangalore'},
+        { 'name':'Wipro',
+            'employees': 115000,
+            'headoffice': 'Bangalore'},
+        { 'name':'Tata Consultancy Services (TCS)',
+            'employees': 150000,
+            'headoffice': 'Bangalore'},
+        { 'name':'HCL Technologies',
+            'employees': 90000,
+            'headoffice': 'Noida'},
+    ];
+
     $http({
         method: 'GET',
         url: '/rezervasala/cityes',
@@ -64,10 +82,17 @@ app.controller('rezervaresala', function($scope, $http) {
 
             $http.post('/add/searchconferenceroom', $scope.searchConferenceRoomDTO).success(function(data2) {
                 console.log(data2);
+                $scope.searchResult = data2;
             }).error(function() {
             });
 
         });
     }
+
+    $scope.idSelectedItem = null;
+    $scope.setSelected = function (idSelectedItem) {
+        debugger
+        $scope.idSelectedItem = idSelectedItem;
+    };
 
 });
