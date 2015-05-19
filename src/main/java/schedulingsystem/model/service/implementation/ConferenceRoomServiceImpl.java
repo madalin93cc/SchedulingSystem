@@ -53,11 +53,24 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         Features features1 = featuresRepository.save(features);
         Location location1 = locationRepository.save(location);
 
-        ConferenceRoom conferenceRoom = new ConferenceRoom(conferenceRoomDTO, equipment1.getId(), features1.getId(), location1.getId());
+        ConferenceRoom conferenceRoom = new ConferenceRoom(conferenceRoomDTO);
         conferenceRoom.setFkLocation(location1);
         conferenceRoom.setFkFeatures(features1);
         conferenceRoom.setFkEquipment(equipment1);
         conferenceRoom.setFkOwner(SchedulingSystemApplication.userLoged);
+        return conferenceRoomRepository.save(conferenceRoom);
+    }
+
+    @Override
+    public ConferenceRoom updateConferenceRoom(ConferenceRoomDTO conferenceRoomDTO) {
+        ConferenceRoom conferenceRoom = conferenceRoomRepository.findOne(conferenceRoomDTO.getId());
+        Location location = locationRepository.save(new Location(conferenceRoomDTO.getFkLocation()));
+        Features features = featuresRepository.save(new Features(conferenceRoomDTO.getFkFeatures()));
+        Equipment equipment = equipmentRepository.save(new Equipment(conferenceRoomDTO.getFkEquipment()));
+        conferenceRoom.setName(conferenceRoomDTO.getName());
+        conferenceRoom.setPlacesNumber(conferenceRoomDTO.getPlacesNumber());
+        conferenceRoom.setSurface(conferenceRoomDTO.getSurface());
+
         return conferenceRoomRepository.save(conferenceRoom);
     }
 

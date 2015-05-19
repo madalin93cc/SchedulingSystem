@@ -43,6 +43,7 @@ public class Location {
     }
 
     public Location(LocationDTO locationDTO){
+        this.id = locationDTO.getId();
         this.name = locationDTO.getName();
         this.city = locationDTO.getCity();
         this.sector = locationDTO.getSector();

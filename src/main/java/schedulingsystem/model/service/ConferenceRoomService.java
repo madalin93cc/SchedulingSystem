@@ -14,6 +14,8 @@ public interface ConferenceRoomService {
 
     public ConferenceRoom saveConferenceRoom(ConferenceRoomDTO conferenceRoomDTO);
 
+    public ConferenceRoom updateConferenceRoom(ConferenceRoomDTO conferenceRoomDTO);
+
     public List<String> getAllCapacityes();
 
     public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO);

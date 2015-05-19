@@ -44,7 +44,7 @@ public class ConferenceRoom {
 
     }
 
-    public ConferenceRoom(ConferenceRoomDTO conferenceRoomDTO, Long equipmentId, Long featuresId, Long locationId){
+    public ConferenceRoom(ConferenceRoomDTO conferenceRoomDTO){
         this.name = conferenceRoomDTO.getName();
         this.placesNumber = conferenceRoomDTO.getPlacesNumber();
         this.surface = conferenceRoomDTO.getSurface();

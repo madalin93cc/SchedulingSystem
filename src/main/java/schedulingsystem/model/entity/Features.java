@@ -47,6 +47,7 @@ public class Features {
 
 
     public Features(FeaturesDTO featuresDTO){
+        this.id = featuresDTO.getId();
         this.climateSystem = featuresDTO.getClimateSystem();
         this.naturalLight = featuresDTO.getNaturalLight();
         this.darkness = featuresDTO.getDarkness();

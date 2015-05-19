@@ -63,6 +63,7 @@ public class Equipment {
     }
 
     public Equipment(EquipmentDTO equipmentDTO){
+        this.id = equipmentDTO.getId();
         this.wireless = equipmentDTO.getWireless();
         this.videoprojector = equipmentDTO.getVideoprojector();
         this.laserpointer = equipmentDTO.getLaserpointer();

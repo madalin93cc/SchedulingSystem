@@ -53,6 +53,11 @@ public class ConferenceRoomController {
         return conferenceRoomService.saveConferenceRoom(body);
     }
 
+    @RequestMapping(value = "/update/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
+    public ConferenceRoom updateConferenceRoom(@RequestBody ConferenceRoomDTO body){
+        return conferenceRoomService.updateConferenceRoom(body);
+    }
+
     @RequestMapping(value = "/add/searchconferenceroom", method = RequestMethod.POST, produces ="application/json")
     public List<SearchResultDTO> searchConferenceRoom (@RequestBody SearchConferenceRoomDTO body){
         return conferenceRoomService.getSearchResult(body);

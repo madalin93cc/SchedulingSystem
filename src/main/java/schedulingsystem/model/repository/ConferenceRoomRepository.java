@@ -14,4 +14,6 @@ import java.util.List;
 public interface ConferenceRoomRepository extends JpaRepository<ConferenceRoom, Long> {
 
     List<ConferenceRoom> findByFkOwner(User owner);
+
+    List<ConferenceRoom> findByName(String name);
 }

@@ -12,6 +12,7 @@ import java.io.Serializable;
  * Created by Madalin.Colezea on 5/5/2015.
  */
 public class ConferenceRoomDTO implements Serializable{
+    private Long id;
 
     private String name;
 
@@ -29,6 +30,7 @@ public class ConferenceRoomDTO implements Serializable{
     }
 
     public ConferenceRoomDTO(Long id, String name, Integer placesNumber, Integer surface, LocationDTO fkLocation, FeaturesDTO fkFeatures, EquipmentDTO fkEquipment) {
+        this.id = id;
         this.name = name;
         this.placesNumber = placesNumber;
         this.surface = surface;
@@ -38,12 +40,21 @@ public class ConferenceRoomDTO implements Serializable{
     }
 
     public ConferenceRoomDTO(ConferenceRoom conferenceRoom){
+        this.id = conferenceRoom.getId();
         this.name = conferenceRoom.getName();
         this.placesNumber = conferenceRoom.getPlacesNumber();
         this.surface = conferenceRoom.getSurface();
         this.fkEquipment = new EquipmentDTO(conferenceRoom.getFkEquipment());
         this.fkFeatures = new FeaturesDTO(conferenceRoom.getFkFeatures());
         this.fkLocation = new LocationDTO(conferenceRoom.getFkLocation());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

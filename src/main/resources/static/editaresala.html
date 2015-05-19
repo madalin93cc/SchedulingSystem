@@ -13,9 +13,8 @@
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Lista sali</label>
                     <div class="col-xs-8 selectContainer">
-                        <select name="selectedroom" class="form-control" ng-model="selectedroom">
+                        <select name="selectedroom" class="form-control" ng-model="selectedroom" data-ng-options="item.name for item in rooms" ng-change="roomChanged(item)">
                             <option value=""></option>
-                            <!--<option value="1">Localitatea, Sala, Data, Perioada</option>-->
                         </select>
                     </div>
                 </div>

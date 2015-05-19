@@ -50,13 +50,16 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
         }
 
         $scope.saveConferenceRoom = function () {
+            debugger
             EditaresalaService.update($rootScope.selected, $scope.conferenceroom);
             $http.get('/get/newconferenceroom/').success(function(data) {
                 $scope.conferenceroomDTO = data;
+                $scope.conferenceroomDTO.id = EditaresalaService.conferenceroom.id;
                 $scope.conferenceroomDTO.name = EditaresalaService.conferenceroom.name;
                 $scope.conferenceroomDTO.placesNumber = EditaresalaService.conferenceroom.placesNumber;
                 $scope.conferenceroomDTO.surface = EditaresalaService.conferenceroom.surface;
 //            Features
+                $scope.conferenceroomDTO.fkFeatures.id = EditaresalaService.conferenceroom.fkFeatures.id;
                 $scope.conferenceroomDTO.fkFeatures.climateSystem = EditaresalaService.conferenceroom.fkFeatures.climateSystem;
                 $scope.conferenceroomDTO.fkFeatures.naturalLight = EditaresalaService.conferenceroom.fkFeatures.naturalLight;
                 $scope.conferenceroomDTO.fkFeatures.darkness = EditaresalaService.conferenceroom.fkFeatures.darkness;
@@ -66,6 +69,7 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
                 $scope.conferenceroomDTO.fkFeatures.parking = EditaresalaService.conferenceroom.fkFeatures.parking;
                 $scope.conferenceroomDTO.fkFeatures.elevator = EditaresalaService.conferenceroom.fkFeatures.elevator;
 //            Location
+                $scope.conferenceroomDTO.fkLocation.id = EditaresalaService.conferenceroom.fkLocation.id;
                 $scope.conferenceroomDTO.fkLocation.name = EditaresalaService.conferenceroom.fkLocation.name;
                 $scope.conferenceroomDTO.fkLocation.city = EditaresalaService.conferenceroom.fkLocation.city;
                 $scope.conferenceroomDTO.fkLocation.sector = EditaresalaService.conferenceroom.fkLocation.sector;
@@ -74,6 +78,7 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
                 $scope.conferenceroomDTO.fkLocation.streetNumber = EditaresalaService.conferenceroom.fkLocation.streetNumber;
                 $scope.conferenceroomDTO.fkLocation.indication = EditaresalaService.conferenceroom.fkLocation.indication;
 //            Equipments
+                $scope.conferenceroomDTO.fkEquipment.id = EditaresalaService.conferenceroom.fkEquipment.id;
                 $scope.conferenceroomDTO.fkEquipment.wireless = EditaresalaService.conferenceroom.fkEquipment.wireless;
                 $scope.conferenceroomDTO.fkEquipment.videoprojector = EditaresalaService.conferenceroom.fkEquipment.videoprojector;
                 $scope.conferenceroomDTO.fkEquipment.laserpointer = EditaresalaService.conferenceroom.fkEquipment.laserpointer;
@@ -89,10 +94,16 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
                 $scope.conferenceroomDTO.fkEquipment.printer = EditaresalaService.conferenceroom.fkEquipment.printer;
                 $scope.conferenceroomDTO.fkEquipment.translator = EditaresalaService.conferenceroom.fkEquipment.translator;
 
-                $http.post('/add/conferenceroom/', $scope.conferenceroomDTO).success(function(data2) {
+                $http.post('/update/conferenceroom/', $scope.conferenceroomDTO).success(function(data2) {
                     EditaresalaService.conferenceroom = null;
                 }).error(function() {
                 });
             });
+        }
+
+        $scope.roomChanged = function(){
+            debugger
+            $scope.conferenceroom = $scope.selectedroom;
+//            EditaresalaService.fillForm($scope.selectedroom)
         }
     }]);
