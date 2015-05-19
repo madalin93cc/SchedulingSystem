@@ -67,4 +67,9 @@ public class ConferenceRoomController {
     public List<String> getCapacityes(){
         return conferenceRoomService.getAllCapacityes();
     }
+
+    @RequestMapping(value = "/editaresala/rooms", method = RequestMethod.GET)
+    public List<ConferenceRoomDTO> getAllRoomsByOwner(){
+        return conferenceRoomService.getAllRoomsByOwner();
+    }
 }

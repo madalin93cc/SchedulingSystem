@@ -1,6 +1,7 @@
 package schedulingsystem.model.dto;
 
 import schedulingsystem.model.entity.ConferenceRoom;
+import schedulingsystem.model.entity.Equipment;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -59,6 +60,24 @@ public class EquipmentDTO implements Serializable{
         this.laptop = laptop;
         this.printer = printer;
         this.translator = translator;
+    }
+
+    public EquipmentDTO(Equipment equipment){
+        this.id = equipment.getId();
+        this.wireless = equipment.getWireless();
+        this.videoprojector = equipment.getVideoprojector();
+        this.laserpointer = equipment.getLaserpointer();
+        this.projectionScreen = equipment.getProjectionScreen();
+        this.flipchart = equipment.getFlipchart();
+        this.whiteboard = equipment.getWhiteboard();
+        this.soundsystem = equipment.getSoundsystem();
+        this.microphones = equipment.getMicrophones();
+        this.tv = equipment.getTv();
+        this.videoconference = equipment.getVideoconference();
+        this.recordAV = equipment.getRecordAV();
+        this.laptop = equipment.getLaptop();
+        this.printer = equipment.getPrinter();
+        this.translator = equipment.getTranslator();
     }
 
     public Long getId() {

@@ -77,4 +77,14 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
     public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO) {
         return null;
     }
+
+    @Override
+    public List<ConferenceRoomDTO> getAllRoomsByOwner() {
+        List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findByFkOwner(SchedulingSystemApplication.userLoged);
+        List<ConferenceRoomDTO> conferenceRoomDTOs = new ArrayList<>();
+        for (ConferenceRoom room: conferenceRooms){
+            conferenceRoomDTOs.add(new ConferenceRoomDTO(room));
+        }
+        return conferenceRoomDTOs;
+    }
 }

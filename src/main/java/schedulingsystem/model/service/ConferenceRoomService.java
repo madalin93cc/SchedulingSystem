@@ -17,4 +17,6 @@ public interface ConferenceRoomService {
     public List<String> getAllCapacityes();
 
     public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO);
+
+    public List<ConferenceRoomDTO> getAllRoomsByOwner();
 }

@@ -4,6 +4,8 @@
 app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'EditaresalaService',
     function($rootScope, $scope, $location, $http, EditaresalaService) {
 
+        $scope.rooms = [];
+
         if ($location.$$url == "/editaresala"){
             $rootScope.selected = 1;
         }
@@ -13,6 +15,15 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
         if($scope.selectedroom == ""){
             EditaresalaService.conferenceroom = new Object();
         }
+
+        $http({
+            method: 'GET',
+            url: '/editaresala/rooms',
+            data: {}
+        }).success(function (result) {
+            debugger
+            $scope.rooms = result;
+        });
 
         $scope.changeSelected = function(sel){
             debugger

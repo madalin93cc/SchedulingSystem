@@ -44,6 +44,18 @@ public class FeaturesDTO implements Serializable {
         this.elevator = elevator;
     }
 
+    public FeaturesDTO(Features features){
+        this.id = features.getId();
+        this.climateSystem = features.getClimateSystem();
+        this.naturalLight = features.getNaturalLight();
+        this.darkness = features.getDarkness();
+        this.scene = features.getScene();
+        this.catering = features.getCatering();
+        this.restaurant = features.getRestaurant();
+        this.parking = features.getParking();
+        this.elevator = features.getElevator();
+    }
+
     public Long getId() {
         return id;
     }

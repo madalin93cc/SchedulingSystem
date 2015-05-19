@@ -1,5 +1,7 @@
 package schedulingsystem.model.dto;
 
+import schedulingsystem.model.entity.Location;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +40,17 @@ public class LocationDTO implements Serializable{
         this.floor = floor;
         this.streetNumber = streetNumber;
         this.indication = indication;
+    }
+
+    public LocationDTO(Location location){
+        this.id = location.getId();
+        this.name = location.getName();
+        this.city = location.getCity();
+        this.sector = location.getSector();
+        this.street = location.getStreet();
+        this.floor = location.getFloor();
+        this.streetNumber = location.getStreetNumber();
+        this.indication = location.getIndication();
     }
 
     public Long getId() {

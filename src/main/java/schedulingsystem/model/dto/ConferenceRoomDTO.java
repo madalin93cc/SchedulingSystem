@@ -1,5 +1,6 @@
 package schedulingsystem.model.dto;
 
+import schedulingsystem.model.entity.ConferenceRoom;
 import schedulingsystem.model.entity.Equipment;
 import schedulingsystem.model.entity.Features;
 import schedulingsystem.model.entity.Location;
@@ -34,6 +35,15 @@ public class ConferenceRoomDTO implements Serializable{
         this.fkLocation = fkLocation;
         this.fkFeatures = fkFeatures;
         this.fkEquipment = fkEquipment;
+    }
+
+    public ConferenceRoomDTO(ConferenceRoom conferenceRoom){
+        this.name = conferenceRoom.getName();
+        this.placesNumber = conferenceRoom.getPlacesNumber();
+        this.surface = conferenceRoom.getSurface();
+        this.fkEquipment = new EquipmentDTO(conferenceRoom.getFkEquipment());
+        this.fkFeatures = new FeaturesDTO(conferenceRoom.getFkFeatures());
+        this.fkLocation = new LocationDTO(conferenceRoom.getFkLocation());
     }
 
     public String getName() {

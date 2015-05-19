@@ -73,6 +73,7 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'Cr
             $http.post('/add/conferenceroom/', $scope.conferenceroomDTO).success(function(data2) {
                 console.log(data2);
                 CrearesalaService.conferenceroom = null;
+                $location.path("/");
             }).error(function() {
             });
         });
