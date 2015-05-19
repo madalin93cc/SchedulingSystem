@@ -53,6 +53,12 @@ public class ConferenceRoomController {
         return conferenceRoomService.saveConferenceRoom(body);
     }
 
+    @RequestMapping(value = "/delete/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
+    public Boolean deleteConferenceRoom(@RequestBody Long id){
+        conferenceRoomService.deleteConferenceRoom(id);
+        return true;
+    }
+
     @RequestMapping(value = "/update/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
     public ConferenceRoom updateConferenceRoom(@RequestBody ConferenceRoomDTO body){
         return conferenceRoomService.updateConferenceRoom(body);

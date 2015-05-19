@@ -16,6 +16,7 @@
                         <select name="selectedroom" class="form-control" ng-model="selectedroom" data-ng-options="item.name for item in rooms" ng-change="roomChanged(item)">
                             <option value=""></option>
                         </select>
+                        <button ng-show="selectedroom" ng-click="deleteRoom()">Stergere sala</button>
                     </div>
                 </div>
             </form>

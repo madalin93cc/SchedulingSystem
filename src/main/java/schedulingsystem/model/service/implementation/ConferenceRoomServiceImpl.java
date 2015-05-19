@@ -75,6 +75,15 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
     }
 
     @Override
+    public void deleteConferenceRoom(Long id) {
+        ConferenceRoom conferenceRoom = conferenceRoomRepository.findOne(id);
+        locationRepository.delete(conferenceRoom.getFkLocation());
+        featuresRepository.delete(conferenceRoom.getFkFeatures());
+        equipmentRepository.delete(conferenceRoom.getFkEquipment());
+        conferenceRoomRepository.delete(conferenceRoom);
+    }
+
+    @Override
     public List<String> getAllCapacityes() {
         List<String> capacityes = new ArrayList<>();
         capacityes.add("< 50");

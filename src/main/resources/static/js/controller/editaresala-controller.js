@@ -106,4 +106,12 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
             $scope.conferenceroom = $scope.selectedroom;
 //            EditaresalaService.fillForm($scope.selectedroom)
         }
+
+        $scope.deleteRoom = function(){
+            $http.post('/delete/conferenceroom/', $scope.selectedroom.id).success(function(data2) {
+                debugger
+                // TODO mesaj
+            }).error(function() {
+            });
+        }
     }]);
