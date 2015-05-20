@@ -95,6 +95,21 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
                 $scope.conferenceroomDTO.fkEquipment.translator = EditaresalaService.conferenceroom.fkEquipment.translator;
 
                 $http.post('/update/conferenceroom/', $scope.conferenceroomDTO).success(function(data2) {
+                    console.log(data2);
+                    if (data2 == ""){
+                        $scope.createMessage = "Editare sala invalida."
+                        $scope.confMessage = "A aparut o eroare"
+                        $("#successRoom").modal('show');
+                        $("#content").css("background-color", "#FFBABA");
+                        $("#content").css("color", "#D8000C");
+                    }
+                    else{
+                        $scope.createMessage = "Sala a fost editata cu succes."
+                        $scope.confMessage = "Confirmare"
+                        $("#successRoom").modal('show');
+                        $("#content").css("background-color", "#DFF2BF");
+                        $("#content").css("color", "#4F8A10");
+                    }
                     EditaresalaService.conferenceroom = null;
                 }).error(function() {
                 });
