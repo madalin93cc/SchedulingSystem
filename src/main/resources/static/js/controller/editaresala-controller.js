@@ -126,23 +126,28 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
         }
 
         $scope.deleteRoom = function(){
-            $http.post('/delete/conferenceroom/', $scope.selectedroom.id).success(function(data2) {
-                debugger
-                if (data2 == true){
-                    $scope.createMessage = "Sala a fost stearsa cu succes."
-                    $scope.confMessage = "Confirmare"
-                    $("#successRoom").modal('show');
-                    $("#content").css("background-color", "#DFF2BF");
-                    $("#content").css("color", "#4F8A10");
+            bootbox.confirm("Confirmati stergerea salii?", function(result) {
+                if (result == true){
+                    $http.post('/delete/conferenceroom/', $scope.selectedroom.id).success(function(data2) {
+                        debugger
+                        if (data2 == true){
+                            $scope.createMessage = "Sala a fost stearsa cu succes."
+                            $scope.confMessage = "Confirmare"
+                            $("#successRoom").modal('show');
+                            $("#content").css("background-color", "#DFF2BF");
+                            $("#content").css("color", "#4F8A10");
+                        }
+                        else{
+                            $scope.createMessage = "Sala nu a putut fi stearsa."
+                            $scope.confMessage = "A aparut o eroare"
+                            $("#successRoom").modal('show');
+                            $("#content").css("background-color", "#FFBABA");
+                            $("#content").css("color", "#D8000C");
+                        }
+                    }).error(function() {
+                    });
                 }
-                else{
-                    $scope.createMessage = "Sala nu a putut fi stearsa."
-                    $scope.confMessage = "A aparut o eroare"
-                    $("#successRoom").modal('show');
-                    $("#content").css("background-color", "#FFBABA");
-                    $("#content").css("color", "#D8000C");
-                }
-            }).error(function() {
             });
+
         }
     }]);
