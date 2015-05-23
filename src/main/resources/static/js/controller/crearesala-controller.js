@@ -75,21 +75,24 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'Cr
                 if (data2 == ""){
                     $scope.createMessage = "Sala invalida."
                     $scope.confMessage = "A aparut o eroare"
-                    $("#successRoom").modal('show');
+                    $("#successPopup").modal('show');
                     $("#content").css("background-color", "#FFBABA");
                     $("#content").css("color", "#D8000C");
                 }
                 else{
                     $scope.createMessage = "Sala a fost creata cu succes."
                     $scope.confMessage = "Confirmare"
-                    $("#successRoom").modal('show');
+                    $("#successPopup").modal('show');
                     $("#content").css("background-color", "#DFF2BF");
                     $("#content").css("color", "#4F8A10");
                 }
                 CrearesalaService.conferenceroom = null;
-//                $location.path("/");
             }).error(function() {
             });
         });
+    }
+
+    $scope.goHome = function(){
+        $location.path("/");
     }
 }]);
