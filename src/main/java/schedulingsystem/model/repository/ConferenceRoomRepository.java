@@ -16,4 +16,6 @@ public interface ConferenceRoomRepository extends JpaRepository<ConferenceRoom, 
     List<ConferenceRoom> findByFkOwner(User owner);
 
     List<ConferenceRoom> findByName(String name);
+
+    List<ConferenceRoom> findByFkOwnerAndIsDeleted(User owner, Boolean isDeleted);
 }

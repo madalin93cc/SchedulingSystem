@@ -13,7 +13,7 @@
                         <select name="selectedroom" class="form-control" ng-model="selectedroom" data-ng-options="item.name for item in rooms" ng-change="roomChanged(item)">
                             <option value=""></option>
                         </select>
-                        <button ng-show="selectedroom" ng-click="deleteRoom()">Stergere sala</button>
+                        <button ng-show="selectedroom" ng-click="deleteRoom()" class="btn btn-success">Stergere sala</button>
                     </div>
                 </div>
             </form>
@@ -249,7 +249,6 @@
 </div>
 
 <div id="successRoom" class="modal fade" style="height: 170px">
-    <!--<div class="modal-dialog" style="width:500px>-->
     <div class="modal-content">
         <div class="modal-header"  id="content">
             <h4 class="modal-title">{{confMessage}}</h4>
@@ -261,5 +260,4 @@
             <button ng-click="goHome()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
-    <!--</div>-->
 </div>

@@ -58,6 +58,8 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         conferenceRoom.setFkFeatures(features1);
         conferenceRoom.setFkEquipment(equipment1);
         conferenceRoom.setFkOwner(SchedulingSystemApplication.userLoged);
+
+        conferenceRoom.setIsDeleted(false);
         return conferenceRoomRepository.save(conferenceRoom);
     }
 
@@ -77,10 +79,8 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
     @Override
     public void deleteConferenceRoom(Long id) {
         ConferenceRoom conferenceRoom = conferenceRoomRepository.findOne(id);
-        locationRepository.delete(conferenceRoom.getFkLocation());
-        featuresRepository.delete(conferenceRoom.getFkFeatures());
-        equipmentRepository.delete(conferenceRoom.getFkEquipment());
-        conferenceRoomRepository.delete(conferenceRoom);
+        conferenceRoom.setIsDeleted(true);
+        conferenceRoomRepository.save(conferenceRoom);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
 
     @Override
     public List<ConferenceRoomDTO> getAllRoomsByOwner() {
-        List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findByFkOwner(SchedulingSystemApplication.userLoged);
+        List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findByFkOwnerAndIsDeleted(SchedulingSystemApplication.userLoged, false);
         List<ConferenceRoomDTO> conferenceRoomDTOs = new ArrayList<>();
         for (ConferenceRoom room: conferenceRooms){
             conferenceRoomDTOs.add(new ConferenceRoomDTO(room));

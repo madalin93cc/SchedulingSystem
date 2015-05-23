@@ -1,5 +1,6 @@
 package schedulingsystem.model.entity;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import schedulingsystem.model.dto.ConferenceRoomDTO;
 
 import javax.persistence.*;
@@ -39,6 +40,9 @@ public class ConferenceRoom {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", unique = false, nullable = false, updatable = true)
     private User fkOwner;
+
+    @Column(name = "isDeleted", nullable = true)
+    private Boolean isDeleted;
 
     public ConferenceRoom() {
 
@@ -122,5 +126,13 @@ public class ConferenceRoom {
 
     public void setFkOwner(User fkOwner) {
         this.fkOwner = fkOwner;
+    }
+
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }
