@@ -113,4 +113,9 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         }
         return conferenceRoomDTOs;
     }
+
+    @Override
+    public Boolean reserveRoom(SearchResultDTO searchResultDTO) {
+        return true;
+    }
 }

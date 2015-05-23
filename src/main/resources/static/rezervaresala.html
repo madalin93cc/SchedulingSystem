@@ -232,22 +232,29 @@
 
     </table>
 
-    <button ng-show="idSelectedItem">Rezerva sala</button>
+    <button ng-show="idSelectedItem" class="btn btn-success" ng-click="submitRezervation()">Rezerva sala</button>
 
 <style>
     .selected {
-        background-color: #f5ffa9;
+        background-color: #198E19;
     }
 </style>
 
-<!--<script>-->
-    <!--$(document).ready(function () {-->
-        <!--$('#resultTable tr').click(function (event) {-->
-            <!--alert($(this).attr('id')); //trying to alert id of the clicked row-->
+</div>
 
-        <!--});-->
-    <!--});-->
-<!--</script>-->
-
+<div id="successPopup" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"  id="content">
+                <h4 class="modal-title">{{confMessage}}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{createMessage}}</p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="goHome()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 </div>

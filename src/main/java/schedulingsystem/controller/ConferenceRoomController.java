@@ -83,4 +83,9 @@ public class ConferenceRoomController {
     public List<ConferenceRoomDTO> getAllRoomsByOwner(){
         return conferenceRoomService.getAllRoomsByOwner();
     }
+
+    @RequestMapping(value = "/reserveroom", method = RequestMethod.POST)
+    public Boolean reserveRoom(@RequestBody SearchResultDTO searchResultDTO){
+        return conferenceRoomService.reserveRoom(searchResultDTO);
+    }
 }

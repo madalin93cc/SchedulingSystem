@@ -23,4 +23,6 @@ public interface ConferenceRoomService {
     public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO);
 
     public List<ConferenceRoomDTO> getAllRoomsByOwner();
+
+    public Boolean reserveRoom(SearchResultDTO searchResultDTO);
 }

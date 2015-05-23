@@ -1,4 +1,4 @@
-app.controller('rezervaresala', function($scope, $http) {
+app.controller('rezervaresala', function($scope, $http, $location) {
 
     $scope.cityes = [];
     $scope.capacityes = [];
@@ -38,6 +38,7 @@ app.controller('rezervaresala', function($scope, $http) {
     });
 
     $scope.reserveRoom = function() {
+        debugger
         $http.get('/get/newsearchconferenceroom/').success(function(data) {
             $scope.searchConferenceRoomDTO = data;
             $scope.searchConferenceRoomDTO.location = $scope.searchRoom.city;
@@ -53,7 +54,7 @@ app.controller('rezervaresala', function($scope, $http) {
                 $scope.searchConferenceRoomDTO.capacity = 5;
             else if($scope.searchRoom.capacity == '> 500')
                 $scope.searchConferenceRoomDTO.capacity = 6;
-            $scope.searchConferenceRoomDTO.capacity = $scope.searchRoom.capacity;
+//            $scope.searchConferenceRoomDTO.capacity = $scope.searchRoom.capacity;
             $scope.searchConferenceRoomDTO.date = $scope.searchRoom.date;
             // Features
             $scope.searchConferenceRoomDTO.featuresDTO.climateSystem = $scope.searchRoom.climateSystem;
@@ -91,8 +92,32 @@ app.controller('rezervaresala', function($scope, $http) {
 
     $scope.idSelectedItem = null;
     $scope.setSelected = function (idSelectedItem) {
-        debugger
         $scope.idSelectedItem = idSelectedItem;
     };
 
+    $scope.submitRezervation = function(){
+        debugger
+        $http.post('/reserveroom', $scope.idSelectedItem).success(function(data) {
+            debugger
+            if (data == true){
+                $scope.createMessage = "Sala a fost rezervata cu succes."
+                $scope.confMessage = "Confirmare"
+                $("#successPopup").modal('show');
+                $("#content").css("background-color", "#DFF2BF");
+                $("#content").css("color", "#4F8A10");
+            }
+            else{
+                $scope.createMessage = "Sala nu a putut fi rezervata."
+                $scope.confMessage = "A aparut o eroare"
+                $("#successPopup").modal('show');
+                $("#content").css("background-color", "#FFBABA");
+                $("#content").css("color", "#D8000C");
+            }
+        }).error(function() {
+        });
+
+        $scope.goHome = function(){
+            $location.path("/");
+        }
+    }
 });
