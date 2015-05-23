@@ -11,8 +11,6 @@ app.controller('stergerecont', function($scope, $http, $rootScope, $location) {
                     if (data == true) {
                         $rootScope.authenticated = false;
                         $rootScope.userType = null;
-                        $location.path("/");
-
                         $scope.createMessage = "Contul a fost sters cu succes."
                         $scope.confMessage = "Confirmare"
                         $("#successPopup").modal('show');
@@ -31,5 +29,8 @@ app.controller('stergerecont', function($scope, $http, $rootScope, $location) {
                 });
             }
         });
+    }
+    $scope.goHome = function(){
+        $location.path("/");
     }
 });
