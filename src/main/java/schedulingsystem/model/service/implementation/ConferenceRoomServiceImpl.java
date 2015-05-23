@@ -5,14 +5,8 @@ import schedulingsystem.config.SchedulingSystemApplication;
 import schedulingsystem.model.dto.ConferenceRoomDTO;
 import schedulingsystem.model.dto.SearchConferenceRoomDTO;
 import schedulingsystem.model.dto.SearchResultDTO;
-import schedulingsystem.model.entity.ConferenceRoom;
-import schedulingsystem.model.entity.Equipment;
-import schedulingsystem.model.entity.Features;
-import schedulingsystem.model.entity.Location;
-import schedulingsystem.model.repository.ConferenceRoomRepository;
-import schedulingsystem.model.repository.EquipmentRepository;
-import schedulingsystem.model.repository.FeaturesRepository;
-import schedulingsystem.model.repository.LocationRepository;
+import schedulingsystem.model.entity.*;
+import schedulingsystem.model.repository.*;
 import schedulingsystem.model.service.ConferenceRoomService;
 
 import javax.inject.Inject;
@@ -38,6 +32,9 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
 
     @Inject
     LocationRepository locationRepository;
+
+    @Inject
+    ReservationRepository reservationRepository;
 
     @Override
     public ConferenceRoom saveConferenceRoom(ConferenceRoomDTO conferenceRoomDTO) {
@@ -98,9 +95,10 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
     @Override
     public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO) {
         List<SearchResultDTO> searchResultDTOs = new ArrayList<>();
-        searchResultDTOs.add(new SearchResultDTO("sala1", 10, "Buc"));
-        searchResultDTOs.add(new SearchResultDTO("sala1", 20, "Bucu"));
-        searchResultDTOs.add(new SearchResultDTO("sala1", 30, "Bucur"));
+        List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findAll();
+        for (int i = 0; i < 3; i++){
+            searchResultDTOs.add(new SearchResultDTO(conferenceRooms.get(i)));
+        }
         return searchResultDTOs;
     }
 
@@ -116,6 +114,14 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
 
     @Override
     public Boolean reserveRoom(SearchResultDTO searchResultDTO) {
-        return true;
+        Reservation reservation = new Reservation();
+        reservation.setDate(searchResultDTO.getDate());
+        reservation.setIsConfirmed(false);
+        reservation.setFkUserCreated(SchedulingSystemApplication.userLoged);
+        ConferenceRoom conferenceRoom = conferenceRoomRepository.findOne(searchResultDTO.getId());
+        reservation.setFkConferenceRoom(conferenceRoom);
+        Reservation reservation1 =  reservationRepository.save(reservation);
+        if (reservation1!=null) return true;
+        else return false;
     }
 }

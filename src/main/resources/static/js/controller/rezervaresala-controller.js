@@ -3,24 +3,6 @@ app.controller('rezervaresala', function($scope, $http, $location) {
     $scope.cityes = [];
     $scope.capacityes = [];
 
-    $scope.companies = [
-        { 'name':'Infosys Technologies',
-            'employees': 125000,
-            'headoffice': 'Bangalore'},
-        { 'name':'Cognizant Technologies',
-            'employees': 100000,
-            'headoffice': 'Bangalore'},
-        { 'name':'Wipro',
-            'employees': 115000,
-            'headoffice': 'Bangalore'},
-        { 'name':'Tata Consultancy Services (TCS)',
-            'employees': 150000,
-            'headoffice': 'Bangalore'},
-        { 'name':'HCL Technologies',
-            'employees': 90000,
-            'headoffice': 'Noida'},
-    ];
-
     $http({
         method: 'GET',
         url: '/rezervasala/cityes',
@@ -97,9 +79,10 @@ app.controller('rezervaresala', function($scope, $http, $location) {
 
     $scope.submitRezervation = function(){
         debugger
+        $scope.idSelectedItem.date = $scope.searchRoom.date;
         $http.post('/reserveroom', $scope.idSelectedItem).success(function(data) {
             debugger
-            if (data == true){
+            if (data != ""){
                 $scope.createMessage = "Sala a fost rezervata cu succes."
                 $scope.confMessage = "Confirmare"
                 $("#successPopup").modal('show');
