@@ -42,6 +42,11 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         bigCity.trim();
         bigCity = bigCity.substring(0,1).toUpperCase() + bigCity.substring(1).toLowerCase();
         conferenceRoomDTO.getFkLocation().setCity(bigCity);
+
+        List<String> names = conferenceRoomRepository.getAllNames();
+        if (names.contains(conferenceRoomDTO.getName()) == true){
+            return null;
+        }
         Equipment equipment = new Equipment(conferenceRoomDTO.getFkEquipment());
         Features features = new Features(conferenceRoomDTO.getFkFeatures());
         Location location = new Location(conferenceRoomDTO.getFkLocation());
@@ -116,7 +121,7 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
     public Boolean reserveRoom(SearchResultDTO searchResultDTO) {
         Reservation reservation = new Reservation();
         reservation.setDate(searchResultDTO.getDate());
-        reservation.setIsConfirmed(false);
+        reservation.setStatus(0);
         reservation.setFkUserCreated(SchedulingSystemApplication.userLoged);
         ConferenceRoom conferenceRoom = conferenceRoomRepository.findOne(searchResultDTO.getId());
         reservation.setFkConferenceRoom(conferenceRoom);

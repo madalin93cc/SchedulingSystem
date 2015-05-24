@@ -1,6 +1,7 @@
 package schedulingsystem.model.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import schedulingsystem.model.entity.ConferenceRoom;
 import schedulingsystem.model.entity.User;
@@ -18,4 +19,7 @@ public interface ConferenceRoomRepository extends JpaRepository<ConferenceRoom, 
     List<ConferenceRoom> findByName(String name);
 
     List<ConferenceRoom> findByFkOwnerAndIsDeleted(User owner, Boolean isDeleted);
+
+    @Query("select c.name from ConferenceRoom c where c.isDeleted = false ")
+    List<String> getAllNames();
 }

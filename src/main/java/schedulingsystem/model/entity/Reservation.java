@@ -16,8 +16,8 @@ public class Reservation {
     @Column(name = "Date", nullable = false)
     private Date date;
 
-    @Column(name = "IsConfirmed", nullable = false)
-    private Boolean isConfirmed;
+    @Column(name = "status", nullable = false)
+    private Integer status;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "conferenceroom_id", unique = false, nullable = false, updatable = true)
@@ -30,9 +30,9 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Date date, Boolean isConfirmed, ConferenceRoom fkConferenceRoom, User fkUserCreated) {
+    public Reservation(Date date, Integer status, ConferenceRoom fkConferenceRoom, User fkUserCreated) {
         this.date = date;
-        this.isConfirmed = isConfirmed;
+        this.status = status;
         this.fkConferenceRoom = fkConferenceRoom;
         this.fkUserCreated = fkUserCreated;
     }
@@ -53,12 +53,12 @@ public class Reservation {
         this.date = date;
     }
 
-    public Boolean getIsConfirmed() {
-        return isConfirmed;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setIsConfirmed(Boolean isConfirmed) {
-        this.isConfirmed = isConfirmed;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public ConferenceRoom getFkConferenceRoom() {
