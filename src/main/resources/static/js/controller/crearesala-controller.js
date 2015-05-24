@@ -73,7 +73,7 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'Cr
             $http.post('/add/conferenceroom/', $scope.conferenceroomDTO).success(function(data2) {
                 console.log(data2);
                 if (data2 == ""){
-                    $scope.createMessage = "Sala invalida."
+                    $scope.createMessage = "Datele introduse sunt invalide"
                     $scope.confMessage = "A aparut o eroare"
                     $("#successPopup").modal('show');
                     $("#content").css("background-color", "#FFBABA");
