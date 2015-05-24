@@ -21,12 +21,10 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
             url: '/editaresala/rooms',
             data: {}
         }).success(function (result) {
-            debugger
             $scope.rooms = result;
         });
 
         $scope.changeSelected = function(sel){
-            debugger
             EditaresalaService.update($rootScope.selected, $scope.conferenceroom, $scope.selectedroom);
             $rootScope.selected = sel;
             switch(sel){

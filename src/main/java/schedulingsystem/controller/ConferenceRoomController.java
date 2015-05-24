@@ -88,4 +88,9 @@ public class ConferenceRoomController {
     public Boolean reserveRoom(@RequestBody SearchResultDTO searchResultDTO){
         return conferenceRoomService.reserveRoom(searchResultDTO);
     }
+
+    @RequestMapping(value = "getallrequests", method = RequestMethod.GET)
+    public List<ReservationCheckDTO> getAllRequestsByUser(){
+        return conferenceRoomService.getAllRequestsByUser();
+    }
 }

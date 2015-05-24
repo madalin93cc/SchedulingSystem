@@ -3,6 +3,7 @@ package schedulingsystem.model.service.implementation;
 import org.springframework.stereotype.Service;
 import schedulingsystem.config.SchedulingSystemApplication;
 import schedulingsystem.model.dto.ConferenceRoomDTO;
+import schedulingsystem.model.dto.ReservationCheckDTO;
 import schedulingsystem.model.dto.SearchConferenceRoomDTO;
 import schedulingsystem.model.dto.SearchResultDTO;
 import schedulingsystem.model.entity.*;
@@ -128,5 +129,17 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         Reservation reservation1 =  reservationRepository.save(reservation);
         if (reservation1!=null) return true;
         else return false;
+    }
+
+    @Override
+    public List<ReservationCheckDTO> getAllRequestsByUser() {
+        List<Reservation> reservations = reservationRepository.findByFkUserCreated(SchedulingSystemApplication.userLoged);
+        List<ReservationCheckDTO> reservationCheckDTOs = new ArrayList<>();
+
+        for (Reservation reservation:reservations){
+            reservationCheckDTOs.add(new ReservationCheckDTO(reservation));
+        }
+
+        return reservationCheckDTOs;
     }
 }

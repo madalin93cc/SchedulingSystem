@@ -15,15 +15,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td align="center" valign="middle">sala gigel</td>
-                            <td align="center" valign="middle">21/09/2015</td>
-                            <td align="center" valign="middle">confirmata</td>
-                        </tr>
-                        <tr>
-                            <td align="center" valign="middle">hotel sinaia</td>
-                            <td align="center" valign="middle">18/07/2015</td>
-                            <td align="center" valign="middle">in asteptare</td>
+                        <tr ng-repeat="item in cereri">
+                            <td align="center" valign="middle">{{item.name}}</td>
+                            <td align="center" valign="middle">{{item.date | date : format : timezone}}</td>
+                            <td align="center" valign="middle">{{item.status}}</td>
                         </tr>
                         </tbody>
                     </table>
