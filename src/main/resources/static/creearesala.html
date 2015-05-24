@@ -1,6 +1,21 @@
 <!--<link class="cssdeck" rel="stylesheet" href="/js/bootstrap.min.css">-->
-
 <div class="" id="loginModal">
+
+<style type="text/css">
+
+    input:required:invalid, input:focus:invalid {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeVJREFUeNqkU01oE1EQ/mazSTdRmqSxLVSJVKU9RYoHD8WfHr16kh5EFA8eSy6hXrwUPBSKZ6E9V1CU4tGf0DZWDEQrGkhprRDbCvlpavan3ezu+LLSUnADLZnHwHvzmJlvvpkhZkY7IqFNaTuAfPhhP/8Uo87SGSaDsP27hgYM/lUpy6lHdqsAtM+BPfvqKp3ufYKwcgmWCug6oKmrrG3PoaqngWjdd/922hOBs5C/jJA6x7AiUt8VYVUAVQXXShfIqCYRMZO8/N1N+B8H1sOUwivpSUSVCJ2MAjtVwBAIdv+AQkHQqbOgc+fBvorjyQENDcch16/BtkQdAlC4E6jrYHGgGU18Io3gmhzJuwub6/fQJYNi/YBpCifhbDaAPXFvCBVxXbvfbNGFeN8DkjogWAd8DljV3KRutcEAeHMN/HXZ4p9bhncJHCyhNx52R0Kv/XNuQvYBnM+CP7xddXL5KaJw0TMAF8qjnMvegeK/SLHubhpKDKIrJDlvXoMX3y9xcSMZyBQ+tpyk5hzsa2Ns7LGdfWdbL6fZvHn92d7dgROH/730YBLtiZmEdGPkFnhX4kxmjVe2xgPfCtrRd6GHRtEh9zsL8xVe+pwSzj+OtwvletZZ/wLeKD71L+ZeHHWZ/gowABkp7AwwnEjFAAAAAElFTkSuQmCC);
+        background-position: right top;
+        background-repeat: no-repeat;
+    }
+    input:required:valid {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAepJREFUeNrEk79PFEEUx9/uDDd7v/AAQQnEQokmJCRGwc7/QeM/YGVxsZJQYI/EhCChICYmUJigNBSGzobQaI5SaYRw6imne0d2D/bYmZ3dGd+YQKEHYiyc5GUyb3Y+77vfeWNpreFfhvXfAWAAJtbKi7dff1rWK9vPHx3mThP2Iaipk5EzTg8Qmru38H7izmkFHAF4WH1R52654PR0Oamzj2dKxYt/Bbg1OPZuY3d9aU82VGem/5LtnJscLxWzfzRxaWNqWJP0XUadIbSzu5DuvUJpzq7sfYBKsP1GJeLB+PWpt8cCXm4+2+zLXx4guKiLXWA2Nc5ChOuacMEPv20FkT+dIawyenVi5VcAbcigWzXLeNiDRCdwId0LFm5IUMBIBgrp8wOEsFlfeCGm23/zoBZWn9a4C314A1nCoM1OAVccuGyCkPs/P+pIdVIOkG9pIh6YlyqCrwhRKD3GygK9PUBImIQQxRi4b2O+JcCLg8+e8NZiLVEygwCrWpYF0jQJziYU/ho2TUuCPTn8hHcQNuZy1/94sAMOzQHDeqaij7Cd8Dt8CatGhX3iWxgtFW/m29pnUjR7TSQcRCIAVW1FSr6KAVYdi+5Pj8yunviYHq7f72po3Y9dbi7CxzDO1+duzCXH9cEPAQYAhJELY/AqBtwAAAAASUVORK5CYII=);
+        background-position: right top;
+        background-repeat: no-repeat;
+    }
+
+</style>
+
     <div class="modal-header">
         <h3>Adaugare sala in sistem</h3>
     </div>
@@ -16,12 +31,13 @@
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane active in" id="date">
                     <form class="form-horizontal" action='' method="POST">
+                        <ul class="errorMessages"></ul>
                         <fieldset>
                             <div class="control-group">
                                 <!-- Denumire sala -->
-                                <label class="control-label"  for="denumire1">Denumire sala</label>
+                                <label class="control-label" for="denumire1">Denumire sala</label>
                                 <div class="controls">
-                                    <input ng-required="true" ng-model="conferenceroom.name" type="text" id="denumire1" name="denumire" placeholder="" class="input-xlarge">
+                                    <input ng-model="conferenceroom.name" pattern="[A-Za-z ]{5,20}" ng-required="true" type="text" id="denumire1" name="denumire">
                                 </div>
                             </div>
 
@@ -281,3 +297,48 @@
         </div>
     </div>
 </div>
+
+<script>
+    var createAllErrors = function() {
+        var form = $( this ),
+                errorList = $( "ul.errorMessages", form );
+
+        var showAllErrorMessages = function() {
+            errorList.empty();
+
+            // Find all invalid fields within the form.
+            var invalidFields = form.find( ":invalid" ).each( function( index, node ) {
+
+                // Find the field's corresponding label
+                var label = $( "label[for=" + node.id + "] "),
+                // Opera incorrectly does not fill the validationMessage property.
+                        message = node.validationMessage || 'Invalid value.';
+
+                errorList
+                        .show()
+                        .append( "<li><span>" + label.html() + "</span> " + message + "</li>" );
+            });
+        };
+
+        // Support Safari
+        form.on( "submit", function( event ) {
+            if ( this.checkValidity && !this.checkValidity() ) {
+                $( this ).find( ":invalid" ).first().focus();
+                event.preventDefault();
+            }
+        });
+
+        $( "input[type=submit], button:not([type=button])", form )
+                .on( "click", showAllErrorMessages);
+
+        $( "input", form ).on( "keypress", function( event ) {
+            var type = $( this ).attr( "type" );
+            if ( /date|email|month|number|search|tel|text|time|url|week/.test ( type )
+                    && event.keyCode == 13 ) {
+                showAllErrorMessages();
+            }
+        });
+    };
+
+    $( "form" ).each( createAllErrors );
+</script>
