@@ -12,5 +12,5 @@ public interface UserService {
 
     public User login(CredentialsDTO credentialsDTO);
 
-    public void deleteAccount();
+    public Boolean deleteAccount();
 }

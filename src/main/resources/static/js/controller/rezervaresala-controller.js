@@ -20,7 +20,6 @@ app.controller('rezervaresala', function($scope, $http, $location) {
     });
 
     $scope.reserveRoom = function() {
-        debugger
         $http.get('/get/newsearchconferenceroom/').success(function(data) {
             $scope.searchConferenceRoomDTO = data;
             $scope.searchConferenceRoomDTO.location = $scope.searchRoom.city;
@@ -78,10 +77,8 @@ app.controller('rezervaresala', function($scope, $http, $location) {
     };
 
     $scope.submitRezervation = function(){
-        debugger
         $scope.idSelectedItem.date = $scope.searchRoom.date;
         $http.post('/reserveroom', $scope.idSelectedItem).success(function(data) {
-            debugger
             if (data != ""){
                 $scope.createMessage = "Sala a fost rezervata cu succes."
                 $scope.confMessage = "Confirmare"

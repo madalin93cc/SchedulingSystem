@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import schedulingsystem.model.entity.ConferenceRoom;
 import schedulingsystem.model.entity.Reservation;
 import schedulingsystem.model.entity.User;
 
@@ -17,6 +18,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     List<Reservation> findByFkUserCreated(User fkUserCreated);
 
+    List<Reservation> findByFkConferenceRoom(ConferenceRoom conferenceRoom);
+
     @Query("select r from Reservation r where r.fkConferenceRoom.fkOwner = :user and r.status = 0")
     List<Reservation> findAllForConfirmation(@Param("user") User user);
+
+    @Query("select r from Reservation r where r.fkConferenceRoom.fkOwner = :user")
+    List<Reservation> findAllReservationsByManager(@Param("user") User user);
 }

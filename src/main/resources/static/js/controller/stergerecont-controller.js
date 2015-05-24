@@ -4,11 +4,9 @@
 app.controller('stergerecont', function($scope, $http, $rootScope, $location) {
     $scope.deleteAccount = function(){
         bootbox.confirm("Sunteti sigur?", function(result) {
-            debugger
             if (result == true) {
                 $http.get('/deleteAccount', {}).success(function (data) {
-                    debugger
-                    if (data == true) {
+                    if (data != "") {
                         $rootScope.authenticated = false;
                         $rootScope.userType = null;
                         $scope.createMessage = "Contul a fost sters cu succes."
@@ -18,7 +16,7 @@ app.controller('stergerecont', function($scope, $http, $rootScope, $location) {
                         $("#content").css("color", "#4F8A10");
                     }
                     else {
-                        $scope.createMessage = "Contul nu a putut fi sters."
+                        $scope.createMessage = "Contul nu poate fi sters."
                         $scope.confMessage = "A aparut o eroare"
                         $("#successPopup").modal('show');
                         $("#content").css("background-color", "#FFBABA");

@@ -86,7 +86,10 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'Cr
                     $("#content").css("background-color", "#DFF2BF");
                     $("#content").css("color", "#4F8A10");
                 }
-                CrearesalaService.conferenceroom = null;
+                CrearesalaService.conferenceroom = new Object();
+                CrearesalaService.conferenceroom.fkLocation = new Object();
+                CrearesalaService.conferenceroom.fkFeatures = new Object();
+                CrearesalaService.conferenceroom.fkEquipment = new Object();
             }).error(function() {
             });
         });

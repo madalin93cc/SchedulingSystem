@@ -1,10 +1,8 @@
 package schedulingsystem.model.entity;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import schedulingsystem.model.dto.ConferenceRoomDTO;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /**
  * Created by Adi on 27.04.2015.

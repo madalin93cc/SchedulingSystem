@@ -10,14 +10,11 @@ app.controller('confirmarecereri', function($scope, $http, $location) {
         url: '/getrequestforconfirmation',
         data: {}
     }).success(function (result) {
-        debugger
         $scope.cereri = result;
     });
 
     $scope.confirm = function(){
-        debugger
         $http.post('/confirmrequest', $scope.cerereselectata).success(function(data2) {
-            debugger
             if (data2 == false){
                 $scope.createMessage = "Cererea nu a putut fi confirmata"
                 $scope.confMessage = "A aparut o eroare"

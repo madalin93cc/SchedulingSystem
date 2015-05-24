@@ -1,18 +1,12 @@
 package schedulingsystem.controller;
 
-import org.springframework.data.authentication.UserCredentials;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import schedulingsystem.config.SchedulingSystemApplication;
 import schedulingsystem.model.dto.CredentialsDTO;
 import schedulingsystem.model.entity.User;
 import schedulingsystem.model.service.UserService;
-import schedulingsystem.utils.RequestMappingEnum;
 
 import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by Colezea on 26/04/2015.
@@ -56,7 +50,6 @@ public class UserController {
 
     @RequestMapping(value = "/deleteAccount", method = RequestMethod.GET, produces = "application/json")
     public Boolean deleteAccount(){
-        userService.deleteAccount();
-        return true;
+        return userService.deleteAccount();
     }
 }

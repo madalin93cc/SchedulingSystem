@@ -48,7 +48,6 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
         }
 
         $scope.saveConferenceRoom = function () {
-            debugger
             EditaresalaService.update($rootScope.selected, $scope.conferenceroom);
             $http.get('/get/newconferenceroom/').success(function(data) {
                 $scope.conferenceroomDTO = data;
@@ -119,7 +118,6 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
         }
 
         $scope.roomChanged = function(){
-            debugger
             $scope.conferenceroom = $scope.selectedroom;
         }
 
@@ -127,7 +125,6 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
             bootbox.confirm("Confirmati stergerea salii?", function(result) {
                 if (result == true){
                     $http.post('/delete/conferenceroom/', $scope.selectedroom.id).success(function(data2) {
-                        debugger
                         if (data2 == true){
                             $scope.createMessage = "Sala a fost stearsa cu succes."
                             $scope.confMessage = "Confirmare"

@@ -11,7 +11,6 @@ app.controller('statuscereri', function($scope, $http) {
         url: '/getallrequests',
         data: {}
     }).success(function (result) {
-        debugger
         $scope.cereri = result;
     });
 

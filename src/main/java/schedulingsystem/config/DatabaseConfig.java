@@ -1,6 +1,5 @@
 package schedulingsystem.config;
 
-import org.apache.tomcat.jdbc.pool.DataSource;
 import org.gjt.mm.mysql.Driver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

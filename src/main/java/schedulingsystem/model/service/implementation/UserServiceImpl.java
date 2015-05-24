@@ -3,7 +3,9 @@ package schedulingsystem.model.service.implementation;
 import org.springframework.stereotype.Service;
 import schedulingsystem.config.SchedulingSystemApplication;
 import schedulingsystem.model.dto.CredentialsDTO;
+import schedulingsystem.model.entity.Reservation;
 import schedulingsystem.model.entity.User;
+import schedulingsystem.model.repository.ReservationRepository;
 import schedulingsystem.model.repository.UserRepository;
 import schedulingsystem.model.service.UserService;
 
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService{
 
     @Inject
     UserRepository userRepository;
+
+    @Inject
+    ReservationRepository reservationRepository;
 
     public UserServiceImpl() {
     }
@@ -66,7 +71,22 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void deleteAccount() {
-        userRepository.delete(SchedulingSystemApplication.userLoged);
+    public Boolean deleteAccount() {
+        if (SchedulingSystemApplication.userLoged.getType() == 0){ // client
+            List<Reservation> reservations = reservationRepository.findByFkUserCreated(SchedulingSystemApplication.userLoged);
+            if (reservations.size() == 0){
+                userRepository.delete(SchedulingSystemApplication.userLoged);
+                return true;
+            }
+            else return false;
+        }
+        else { // manager
+            List<Reservation> reservations = reservationRepository.findAllReservationsByManager(SchedulingSystemApplication.userLoged);
+            if (reservations.size() == 0){
+                userRepository.delete(SchedulingSystemApplication.userLoged);
+                return true;
+            }
+            else return false;
+        }
     }
 }

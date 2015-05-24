@@ -1,9 +1,7 @@
 package schedulingsystem.model.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.security.Timestamp;
-import java.sql.Time;
 
 /**
  * Created by Adi on 29.04.2015.

@@ -1,11 +1,7 @@
 package schedulingsystem.model.dto;
 
 import schedulingsystem.model.entity.ConferenceRoom;
-import schedulingsystem.model.entity.Equipment;
-import schedulingsystem.model.entity.Features;
-import schedulingsystem.model.entity.Location;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 /**
