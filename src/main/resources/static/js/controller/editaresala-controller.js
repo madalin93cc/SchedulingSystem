@@ -102,7 +102,7 @@ app.controller('editaresala', ['$rootScope', '$scope', '$location', '$http', 'Ed
                         $("#content").css("color", "#D8000C");
                     }
                     else{
-                        $scope.createMessage = "Sala a fost editata cu succes."
+                        $scope.createMessage = "Sala a fost modificata cu succes."
                         $scope.confMessage = "Confirmare"
                         $("#successRoom").modal('show');
                         $("#content").css("background-color", "#DFF2BF");
