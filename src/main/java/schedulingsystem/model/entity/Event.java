@@ -1,12 +1,11 @@
 package schedulingsystem.model.entity;
 
-import org.hibernate.metamodel.relational.Database;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.crypto.Data;
 import java.security.Timestamp;
-import java.sql.Time;
 
 /**
  * Created by Adi on 29.04.2015.

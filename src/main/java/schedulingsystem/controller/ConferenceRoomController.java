@@ -5,12 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import schedulingsystem.model.dto.*;
-import schedulingsystem.model.entity.*;
+import schedulingsystem.model.entity.ConferenceRoom;
 import schedulingsystem.model.service.ConferenceRoomService;
 import schedulingsystem.model.service.LocationService;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

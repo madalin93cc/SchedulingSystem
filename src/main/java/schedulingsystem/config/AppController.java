@@ -2,9 +2,7 @@ package schedulingsystem.config;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import schedulingsystem.model.service.UserService;
 
-import javax.inject.Inject;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;

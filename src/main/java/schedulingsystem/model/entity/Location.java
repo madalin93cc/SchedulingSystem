@@ -3,7 +3,6 @@ package schedulingsystem.model.entity;
 import schedulingsystem.model.dto.LocationDTO;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /**
  * Created by Adi on 29.04.2015.

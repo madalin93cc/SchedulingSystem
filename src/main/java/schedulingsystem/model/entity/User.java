@@ -1,7 +1,6 @@
 package schedulingsystem.model.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /**
  * Created by Colezea on 26/04/2015.

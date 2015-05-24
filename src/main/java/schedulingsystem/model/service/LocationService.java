@@ -1,7 +1,5 @@
 package schedulingsystem.model.service;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**

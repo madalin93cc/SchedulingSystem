@@ -1,12 +1,10 @@
 package schedulingsystem.model.service;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import schedulingsystem.model.dto.ConferenceRoomDTO;
 import schedulingsystem.model.dto.ReservationCheckDTO;
 import schedulingsystem.model.dto.SearchConferenceRoomDTO;
 import schedulingsystem.model.dto.SearchResultDTO;
 import schedulingsystem.model.entity.ConferenceRoom;
-import schedulingsystem.model.entity.Reservation;
 
 import java.util.List;
 
