@@ -288,16 +288,18 @@
     </div>
 </div>
 
-<div id="successRoom" class="modal fade" style="height: 170px">
-    <div class="modal-content">
-        <div class="modal-header"  id="content">
-            <h4 class="modal-title">{{confMessage}}</h4>
-        </div>
-        <div class="modal-body">
-            <p>{{createMessage}}</p>
-        </div>
-        <div class="modal-footer">
-            <button ng-click="goHome()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<div id="successRoom" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"  id="content">
+                <h4 class="modal-title">{{confMessage}}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{createMessage}}</p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="goHome()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
