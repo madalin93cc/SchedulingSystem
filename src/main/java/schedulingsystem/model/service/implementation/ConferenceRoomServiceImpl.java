@@ -116,7 +116,7 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
     @Override
     public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO) {
         List<SearchResultDTO> searchResultDTOs = new ArrayList<>();
-        List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findAll();
+        List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findAllNotDeleted();
         for (int i = 0; i < 3; i++){
             searchResultDTOs.add(new SearchResultDTO(conferenceRooms.get(i)));
         }
