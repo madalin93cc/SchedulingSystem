@@ -93,4 +93,19 @@ public class ConferenceRoomController {
     public List<ReservationCheckDTO> getAllRequestsByUser(){
         return conferenceRoomService.getAllRequestsByUser();
     }
+
+    @RequestMapping(value = "getrequestforconfirmation", method = RequestMethod.GET)
+    public List<ReservationCheckDTO> getAllRequestsForConfirmationByUser(){
+        return conferenceRoomService.getAllRequestsForConfirmationByUser();
+    }
+
+    @RequestMapping(value = "confirmrequest", method = RequestMethod.POST, produces = "application/json")
+    public Boolean confirmRequest(@RequestBody ReservationCheckDTO reservationCheckDTO){
+        return conferenceRoomService.confirmRequest(reservationCheckDTO);
+    }
+
+    @RequestMapping(value = "rejectrequest", method = RequestMethod.POST, produces = "application/json")
+    public Boolean rejectRequest(@RequestBody ReservationCheckDTO reservationCheckDTO){
+        return conferenceRoomService.rejectRequest(reservationCheckDTO);
+    }
 }

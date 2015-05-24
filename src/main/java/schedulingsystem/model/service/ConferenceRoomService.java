@@ -1,5 +1,6 @@
 package schedulingsystem.model.service;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import schedulingsystem.model.dto.ConferenceRoomDTO;
 import schedulingsystem.model.dto.ReservationCheckDTO;
 import schedulingsystem.model.dto.SearchConferenceRoomDTO;
@@ -29,4 +30,10 @@ public interface ConferenceRoomService {
     public Boolean reserveRoom(SearchResultDTO searchResultDTO);
 
     public List<ReservationCheckDTO> getAllRequestsByUser();
+
+    public List<ReservationCheckDTO> getAllRequestsForConfirmationByUser();
+
+    public Boolean confirmRequest(ReservationCheckDTO reservationCheckDTO);
+
+    public Boolean rejectRequest(ReservationCheckDTO reservationCheckDTO);
 }

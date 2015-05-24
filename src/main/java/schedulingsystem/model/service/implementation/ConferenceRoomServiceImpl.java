@@ -142,4 +142,32 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
 
         return reservationCheckDTOs;
     }
+
+    @Override
+    public List<ReservationCheckDTO> getAllRequestsForConfirmationByUser() {
+        List<Reservation> reservations = reservationRepository.findAllForConfirmation(SchedulingSystemApplication.userLoged);
+        List<ReservationCheckDTO> reservationCheckDTOs = new ArrayList<>();
+
+        for (Reservation reservation:reservations){
+            reservationCheckDTOs.add(new ReservationCheckDTO(reservation));
+        }
+
+        return reservationCheckDTOs;
+    }
+
+    @Override
+    public Boolean confirmRequest(ReservationCheckDTO reservationCheckDTO) {
+        Reservation reservation = reservationRepository.findOne(reservationCheckDTO.getId());
+        reservation.setStatus(1);
+        reservationRepository.save(reservation);
+        return true;
+    }
+
+    @Override
+    public Boolean rejectRequest(ReservationCheckDTO reservationCheckDTO) {
+        Reservation reservation = reservationRepository.findOne(reservationCheckDTO.getId());
+        reservation.setStatus(2);
+        reservationRepository.save(reservation);
+        return true;
+    }
 }
