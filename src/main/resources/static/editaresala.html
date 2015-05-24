@@ -10,8 +10,8 @@
                         <select name="selectedroom" class="form-control" ng-model="selectedroom" data-ng-options="item.name for item in rooms" ng-change="roomChanged(item)">
                             <option value=""></option>
                         </select>
-                        <button ng-show="selectedroom" ng-click="deleteRoom()" class="btn btn-success">Stergere sala</button>
                     </div>
+                    <button ng-show="selectedroom" ng-click="deleteRoom()" class="btn btn-success">Stergere sala</button>
                 </div>
             </form>
 </div>
@@ -116,7 +116,8 @@
                                 <!-- Indicatii -->
                                 <label class="control-label" for="numar">Indicatii de orientare</label>
                                 <div class="controls">
-                                    <textarea ng-model="conferenceroom.indication" class="field span4" rows="3" id="indicatii" name="indicatii"></textarea>
+                                    <!--<input ng-model="conferenceroom.indication" id="indicatii" name="indicatii" class="col-xs-6 input-xlarge">-->
+                                    <textarea ng-model="conferenceroom.indication" class="col-xs-5 field" rows="3" id="indicatii" name="indicatii"></textarea>
                                 </div>
                             </div>
 
@@ -269,12 +270,13 @@
                         </fieldset>
                     </form>
                 </div>
+                <br>
                 <form class="form-horizontal">
                     <fieldset>
                         <div class="control-group">
                             <!-- Button -->
                             <div class="controls">
-                                <button ng-click="saveConferenceRoom()" class="btn btn-success">Salveaza</button>
+                                <button ng-click="saveConferenceRoom()" class="btn btn-success">Modifica sala</button>
                             </div>
                         </div>
                     </fieldset>

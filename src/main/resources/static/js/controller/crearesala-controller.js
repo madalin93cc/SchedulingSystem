@@ -80,7 +80,7 @@ app.controller('creearesala', ['$rootScope', '$scope', '$location', '$http', 'Cr
                     $("#content").css("color", "#D8000C");
                 }
                 else{
-                    $scope.createMessage = "Sala a fost creata cu succes."
+                    $scope.createMessage = "Sala a fost adaugata cu succes."
                     $scope.confMessage = "Confirmare"
                     $("#successPopup").modal('show');
                     $("#content").css("background-color", "#DFF2BF");
