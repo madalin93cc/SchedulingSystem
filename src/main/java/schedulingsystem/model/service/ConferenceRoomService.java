@@ -17,7 +17,7 @@ public interface ConferenceRoomService {
 
     public ConferenceRoom updateConferenceRoom(ConferenceRoomDTO conferenceRoomDTO);
 
-    public void deleteConferenceRoom(Long id);
+    public ConferenceRoom deleteConferenceRoom(Long id);
 
     public List<String> getAllCapacityes();
 

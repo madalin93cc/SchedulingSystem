@@ -53,9 +53,8 @@ public class ConferenceRoomController {
     }
 
     @RequestMapping(value = "/delete/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
-    public Boolean deleteConferenceRoom(@RequestBody Long id){
-        conferenceRoomService.deleteConferenceRoom(id);
-        return true;
+    public ConferenceRoom deleteConferenceRoom(@RequestBody Long id){
+        return conferenceRoomService.deleteConferenceRoom(id);
     }
 
     @RequestMapping(value = "/update/conferenceroom/", method = RequestMethod.POST, produces ="application/json")

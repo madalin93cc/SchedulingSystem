@@ -91,10 +91,14 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
     }
 
     @Override
-    public void deleteConferenceRoom(Long id) {
+    public ConferenceRoom deleteConferenceRoom(Long id) {
         ConferenceRoom conferenceRoom = conferenceRoomRepository.findOne(id);
+        List<Reservation> reservations = reservationRepository.findByFkConferenceRoom(conferenceRoom);
+        if (reservations.size() != 0){
+            return null;
+        }
         conferenceRoom.setIsDeleted(true);
-        conferenceRoomRepository.save(conferenceRoom);
+        return conferenceRoomRepository.save(conferenceRoom);
     }
 
     @Override

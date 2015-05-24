@@ -6,7 +6,7 @@ app.controller('stergerecont', function($scope, $http, $rootScope, $location) {
         bootbox.confirm("Sunteti sigur?", function(result) {
             if (result == true) {
                 $http.get('/deleteAccount', {}).success(function (data) {
-                    if (data == true) {
+                    if (data != "") {
                         $rootScope.authenticated = false;
                         $rootScope.userType = null;
                         $scope.createMessage = "Contul a fost sters cu succes."
