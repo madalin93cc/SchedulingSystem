@@ -68,7 +68,18 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
 
     @Override
     public ConferenceRoom updateConferenceRoom(ConferenceRoomDTO conferenceRoomDTO) {
+        List<String> names = conferenceRoomRepository.getAllNames();
+        if (names.contains(conferenceRoomDTO.getName()) == true){
+            return null;
+        }
+
         ConferenceRoom conferenceRoom = conferenceRoomRepository.findOne(conferenceRoomDTO.getId());
+
+        List<Reservation> reservations = reservationRepository.findByFkConferenceRoom(conferenceRoom);
+        if (reservations.size() != 0){
+            return null;
+        }
+
         Location location = locationRepository.save(new Location(conferenceRoomDTO.getFkLocation()));
         Features features = featuresRepository.save(new Features(conferenceRoomDTO.getFkFeatures()));
         Equipment equipment = equipmentRepository.save(new Equipment(conferenceRoomDTO.getFkEquipment()));
