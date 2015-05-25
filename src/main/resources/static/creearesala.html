@@ -82,7 +82,7 @@
                                 <!-- Sector -->
                                 <label class="control-label" for="sector">Sector</label>
                                 <div class="controls">
-                                    <input pattern="[1-6]{1}" ng-required="true" ng-model="conferenceroom.sector" type="text" id="sector" name="sector" placeholder="" class="input-xlarge">
+                                    <input pattern="[1-6]{1}" ng-required="false" ng-model="conferenceroom.sector" type="text" id="sector" name="sector" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 
@@ -98,7 +98,7 @@
                                 <!-- Etaj -->
                                 <label class="control-label" for="strada">Etaj</label>
                                 <div class="controls">
-                                    <input pattern="[1-9][0-9]*" ng-required="true" ng-model="conferenceroom.floor" type="text" id="etaj" name="etaj" placeholder="" class="input-xlarge">
+                                    <input pattern="[0-9][0-9]*" ng-required="true" ng-model="conferenceroom.floor" type="text" id="etaj" name="etaj" placeholder="" class="input-xlarge">
                                 </div>
                             </div>
 

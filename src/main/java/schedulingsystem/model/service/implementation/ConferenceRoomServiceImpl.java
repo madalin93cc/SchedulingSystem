@@ -14,6 +14,8 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by Colezea on 28/04/2015.
@@ -113,12 +115,44 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService{
         return capacityes;
     }
 
+    private Integer getNumberPlaces(Integer capacity){
+        switch (capacity){
+            case 1:{
+                return 0;
+            }
+            case 2:{
+                return 50;
+            }
+            case 3:{
+                return 101;
+            }
+            case 4:{
+                return 151;
+            }
+            case 5:{
+                return 251;
+            }
+            case 6:{
+                return 501;
+            }
+            default:{
+                return 0;
+            }
+        }
+    }
+
     @Override
     public List<SearchResultDTO> getSearchResult(SearchConferenceRoomDTO searchConferenceRoomDTO) {
         List<SearchResultDTO> searchResultDTOs = new ArrayList<>();
+        Integer capacity = getNumberPlaces(searchConferenceRoomDTO.getCapacity());
         List<ConferenceRoom> conferenceRooms = conferenceRoomRepository.findAllNotDeleted();
-        for (int i = 0; i < 3; i++){
-            searchResultDTOs.add(new SearchResultDTO(conferenceRooms.get(i)));
+
+        Stream<ConferenceRoom> conferenceRoomStream = conferenceRooms.stream().filter(c->c.getFkLocation().getCity().compareTo(searchConferenceRoomDTO.getLocation()) == 0)
+                .filter(c->c.getPlacesNumber() >= capacity);
+
+        List<ConferenceRoom> conferenceRoomList = conferenceRoomStream.collect(Collectors.toList());
+        for (ConferenceRoom conferenceRoom: conferenceRoomList){
+            searchResultDTOs.add(new SearchResultDTO(conferenceRoom));
         }
         return searchResultDTOs;
     }
