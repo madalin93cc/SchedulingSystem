@@ -8,6 +8,7 @@ import schedulingsystem.model.dto.*;
 import schedulingsystem.model.entity.ConferenceRoom;
 import schedulingsystem.model.service.ConferenceRoomService;
 import schedulingsystem.model.service.LocationService;
+import schedulingsystem.utils.RequestMappings;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -24,7 +25,7 @@ public class ConferenceRoomController {
     @Inject
     private LocationService locationService;
 
-    @RequestMapping(value = "/get/newconferenceroom/", method = RequestMethod.GET)
+    @RequestMapping(value = RequestMappings.GET_NEW_CONFERENCEROOM, method = RequestMethod.GET)
     public ConferenceRoomDTO getNewConferenceRoom(){
         ConferenceRoomDTO conferenceRoom = new ConferenceRoomDTO();
         FeaturesDTO featuresDTO = new FeaturesDTO();
@@ -36,7 +37,7 @@ public class ConferenceRoomController {
         return conferenceRoom;
     }
 
-    @RequestMapping(value = "/get/newsearchconferenceroom/", method = RequestMethod.GET)
+    @RequestMapping(value = RequestMappings.GET_NEW_SEARCH_CONFERENCEROOM, method = RequestMethod.GET)
     public SearchConferenceRoomDTO getSearchConferenceRoomDTO(){
         SearchConferenceRoomDTO searchConferenceRoomDTO = new SearchConferenceRoomDTO();
         FeaturesDTO featuresDTO = new FeaturesDTO();
@@ -47,62 +48,62 @@ public class ConferenceRoomController {
         return searchConferenceRoomDTO;
     }
 
-    @RequestMapping(value = "/add/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
+    @RequestMapping(value = RequestMappings.ADD_CONFERENCEROOM, method = RequestMethod.POST, produces ="application/json")
     public ConferenceRoom addConferenceRoom(@RequestBody ConferenceRoomDTO body){
         return conferenceRoomService.saveConferenceRoom(body);
     }
 
-    @RequestMapping(value = "/delete/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
+    @RequestMapping(value = RequestMappings.DELETE_CONFERENCEROOM, method = RequestMethod.POST, produces ="application/json")
     public ConferenceRoom deleteConferenceRoom(@RequestBody Long id){
         return conferenceRoomService.deleteConferenceRoom(id);
     }
 
-    @RequestMapping(value = "/update/conferenceroom/", method = RequestMethod.POST, produces ="application/json")
+    @RequestMapping(value = RequestMappings.UPDATE_CONFERENCEROOM, method = RequestMethod.POST, produces ="application/json")
     public ConferenceRoom updateConferenceRoom(@RequestBody ConferenceRoomDTO body){
         return conferenceRoomService.updateConferenceRoom(body);
     }
 
-    @RequestMapping(value = "/add/searchconferenceroom", method = RequestMethod.POST, produces ="application/json")
+    @RequestMapping(value = RequestMappings.ADD_SEARCH_CONFERENCEROOM, method = RequestMethod.POST, produces ="application/json")
     public List<SearchResultDTO> searchConferenceRoom (@RequestBody SearchConferenceRoomDTO body){
         return conferenceRoomService.getSearchResult(body);
     }
 
-    @RequestMapping(value = "/rezervasala/cityes", method = RequestMethod.GET)
+    @RequestMapping(value = RequestMappings.RESERVEROOM_CITYES, method = RequestMethod.GET)
     public List<String> getCityes(){
         return locationService.getAllCityes();
     }
 
-    @RequestMapping(value = "/rezervasala/capacityes", method = RequestMethod.GET)
+    @RequestMapping(value = RequestMappings.RESERVEROOM_CAPACITYES, method = RequestMethod.GET)
     public List<String> getCapacityes(){
         return conferenceRoomService.getAllCapacityes();
     }
 
-    @RequestMapping(value = "/editaresala/rooms", method = RequestMethod.GET)
+    @RequestMapping(value = RequestMappings.EDIT_CONFERENCEROOM_ROOMS, method = RequestMethod.GET)
     public List<ConferenceRoomDTO> getAllRoomsByOwner(){
         return conferenceRoomService.getAllRoomsByOwner();
     }
 
-    @RequestMapping(value = "/reserveroom", method = RequestMethod.POST)
+    @RequestMapping(value = RequestMappings.RESERVE_ROOM, method = RequestMethod.POST)
     public Boolean reserveRoom(@RequestBody SearchResultDTO searchResultDTO){
         return conferenceRoomService.reserveRoom(searchResultDTO);
     }
 
-    @RequestMapping(value = "getallrequests", method = RequestMethod.GET)
+    @RequestMapping(value = RequestMappings.GET_ALL_REQUESTS, method = RequestMethod.GET)
     public List<ReservationCheckDTO> getAllRequestsByUser(){
         return conferenceRoomService.getAllRequestsByUser();
     }
 
-    @RequestMapping(value = "getrequestforconfirmation", method = RequestMethod.GET)
+    @RequestMapping(value = RequestMappings.GET_REQUESTS_FOR_CONFIRMATION, method = RequestMethod.GET)
     public List<ReservationCheckDTO> getAllRequestsForConfirmationByUser(){
         return conferenceRoomService.getAllRequestsForConfirmationByUser();
     }
 
-    @RequestMapping(value = "confirmrequest", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = RequestMappings.CONFIRM_REQUEST, method = RequestMethod.POST, produces = "application/json")
     public Boolean confirmRequest(@RequestBody ReservationCheckDTO reservationCheckDTO){
         return conferenceRoomService.confirmRequest(reservationCheckDTO);
     }
 
-    @RequestMapping(value = "rejectrequest", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = RequestMappings.REJECT_REQUEST, method = RequestMethod.POST, produces = "application/json")
     public Boolean rejectRequest(@RequestBody ReservationCheckDTO reservationCheckDTO){
         return conferenceRoomService.rejectRequest(reservationCheckDTO);
     }
