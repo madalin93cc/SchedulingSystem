@@ -22,10 +22,10 @@ public class User {
     private String password;
     @Column(name = "TYPE", nullable = false)
     private Integer type;
-    @Column(name = "FKEVENTSCREATED", nullable = true)
-    private Integer fkEventsCreated;
-    @Column(name = "FKEVENTSJOINED", nullable = true)
-    private Integer fkEventsJoined;
+//    @Column(name = "FKEVENTSCREATED", nullable = true)
+//    private Integer fkEventsCreated;
+//    @Column(name = "FKEVENTSJOINED", nullable = true)
+//    private Integer fkEventsJoined;
 
     public User() {
     }
@@ -86,19 +86,48 @@ public class User {
         this.type = type;
     }
 
-    public Integer getFkEventsCreated() {
-        return fkEventsCreated;
+//    public Integer getFkEventsCreated() {
+//        return fkEventsCreated;
+//    }
+//
+//    public void setFkEventsCreated(Integer fkEventsCreated) {
+//        this.fkEventsCreated = fkEventsCreated;
+//    }
+//
+//    public Integer getFkEventsJoined() {
+//        return fkEventsJoined;
+//    }
+//
+//    public void setFkEventsJoined(Integer fkEventsJoined) {
+//        this.fkEventsJoined = fkEventsJoined;
+//    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (!firstName.equals(user.firstName)) return false;
+        if (!id.equals(user.id)) return false;
+        if (!lastName.equals(user.lastName)) return false;
+        if (!password.equals(user.password)) return false;
+        if (!type.equals(user.type)) return false;
+        if (!username.equals(user.username)) return false;
+
+        return true;
     }
 
-    public void setFkEventsCreated(Integer fkEventsCreated) {
-        this.fkEventsCreated = fkEventsCreated;
-    }
-
-    public Integer getFkEventsJoined() {
-        return fkEventsJoined;
-    }
-
-    public void setFkEventsJoined(Integer fkEventsJoined) {
-        this.fkEventsJoined = fkEventsJoined;
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + username.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + type.hashCode();
+        return result;
     }
 }

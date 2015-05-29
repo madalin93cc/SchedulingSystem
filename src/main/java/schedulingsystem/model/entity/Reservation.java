@@ -76,4 +76,30 @@ public class Reservation {
     public void setFkUserCreated(User fkUserCreated) {
         this.fkUserCreated = fkUserCreated;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Reservation)) return false;
+
+        Reservation that = (Reservation) o;
+
+        if (!date.equals(that.date)) return false;
+        if (!fkConferenceRoom.equals(that.fkConferenceRoom)) return false;
+        if (!fkUserCreated.equals(that.fkUserCreated)) return false;
+        if (!id.equals(that.id)) return false;
+        if (!status.equals(that.status)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + date.hashCode();
+        result = 31 * result + status.hashCode();
+        result = 31 * result + fkConferenceRoom.hashCode();
+        result = 31 * result + fkUserCreated.hashCode();
+        return result;
+    }
 }

@@ -133,4 +133,38 @@ public class Location {
     public void setConferenceRoom(ConferenceRoom conferenceRoom) {
         this.conferenceRoom = conferenceRoom;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Location)) return false;
+
+        Location location = (Location) o;
+
+        if (!city.equals(location.city)) return false;
+        if (!conferenceRoom.equals(location.conferenceRoom)) return false;
+        if (floor != null ? !floor.equals(location.floor) : location.floor != null) return false;
+        if (!id.equals(location.id)) return false;
+        if (indication != null ? !indication.equals(location.indication) : location.indication != null) return false;
+        if (!name.equals(location.name)) return false;
+        if (sector != null ? !sector.equals(location.sector) : location.sector != null) return false;
+        if (!street.equals(location.street)) return false;
+        if (!streetNumber.equals(location.streetNumber)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + city.hashCode();
+        result = 31 * result + (sector != null ? sector.hashCode() : 0);
+        result = 31 * result + street.hashCode();
+        result = 31 * result + (floor != null ? floor.hashCode() : 0);
+        result = 31 * result + streetNumber.hashCode();
+        result = 31 * result + (indication != null ? indication.hashCode() : 0);
+        result = 31 * result + conferenceRoom.hashCode();
+        return result;
+    }
 }

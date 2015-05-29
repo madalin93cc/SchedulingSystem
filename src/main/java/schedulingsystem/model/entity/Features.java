@@ -148,4 +148,43 @@ public class Features {
     public void setConferenceRoom(ConferenceRoom conferenceRoom) {
         this.conferenceRoom = conferenceRoom;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Features)) return false;
+
+        Features features = (Features) o;
+
+        if (catering != null ? !catering.equals(features.catering) : features.catering != null) return false;
+        if (climateSystem != null ? !climateSystem.equals(features.climateSystem) : features.climateSystem != null)
+            return false;
+        if (conferenceRoom != null ? !conferenceRoom.equals(features.conferenceRoom) : features.conferenceRoom != null)
+            return false;
+        if (darkness != null ? !darkness.equals(features.darkness) : features.darkness != null) return false;
+        if (elevator != null ? !elevator.equals(features.elevator) : features.elevator != null) return false;
+        if (!id.equals(features.id)) return false;
+        if (naturalLight != null ? !naturalLight.equals(features.naturalLight) : features.naturalLight != null)
+            return false;
+        if (parking != null ? !parking.equals(features.parking) : features.parking != null) return false;
+        if (restaurant != null ? !restaurant.equals(features.restaurant) : features.restaurant != null) return false;
+        if (scene != null ? !scene.equals(features.scene) : features.scene != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (climateSystem != null ? climateSystem.hashCode() : 0);
+        result = 31 * result + (naturalLight != null ? naturalLight.hashCode() : 0);
+        result = 31 * result + (darkness != null ? darkness.hashCode() : 0);
+        result = 31 * result + (scene != null ? scene.hashCode() : 0);
+        result = 31 * result + (catering != null ? catering.hashCode() : 0);
+        result = 31 * result + (restaurant != null ? restaurant.hashCode() : 0);
+        result = 31 * result + (parking != null ? parking.hashCode() : 0);
+        result = 31 * result + (elevator != null ? elevator.hashCode() : 0);
+        result = 31 * result + (conferenceRoom != null ? conferenceRoom.hashCode() : 0);
+        return result;
+    }
 }

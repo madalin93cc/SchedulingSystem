@@ -133,4 +133,38 @@ public class ConferenceRoom {
     public void setIsDeleted(Boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ConferenceRoom)) return false;
+
+        ConferenceRoom that = (ConferenceRoom) o;
+
+        if (!fkEquipment.equals(that.fkEquipment)) return false;
+        if (!fkFeatures.equals(that.fkFeatures)) return false;
+        if (!fkLocation.equals(that.fkLocation)) return false;
+        if (!fkOwner.equals(that.fkOwner)) return false;
+        if (!id.equals(that.id)) return false;
+        if (!isDeleted.equals(that.isDeleted)) return false;
+        if (!name.equals(that.name)) return false;
+        if (!placesNumber.equals(that.placesNumber)) return false;
+        if (surface != null ? !surface.equals(that.surface) : that.surface != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + placesNumber.hashCode();
+        result = 31 * result + (surface != null ? surface.hashCode() : 0);
+        result = 31 * result + fkLocation.hashCode();
+        result = 31 * result + fkFeatures.hashCode();
+        result = 31 * result + fkEquipment.hashCode();
+        result = 31 * result + fkOwner.hashCode();
+        result = 31 * result + isDeleted.hashCode();
+        return result;
+    }
 }

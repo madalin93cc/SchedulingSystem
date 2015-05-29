@@ -225,4 +225,59 @@ public class Equipment {
     public void setConferenceRoom(ConferenceRoom conferenceRoom) {
         this.conferenceRoom = conferenceRoom;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Equipment)) return false;
+
+        Equipment equipment = (Equipment) o;
+
+        if (conferenceRoom != null ? !conferenceRoom.equals(equipment.conferenceRoom) : equipment.conferenceRoom != null)
+            return false;
+        if (flipchart != null ? !flipchart.equals(equipment.flipchart) : equipment.flipchart != null) return false;
+        if (!id.equals(equipment.id)) return false;
+        if (laptop != null ? !laptop.equals(equipment.laptop) : equipment.laptop != null) return false;
+        if (laserpointer != null ? !laserpointer.equals(equipment.laserpointer) : equipment.laserpointer != null)
+            return false;
+        if (microphones != null ? !microphones.equals(equipment.microphones) : equipment.microphones != null)
+            return false;
+        if (printer != null ? !printer.equals(equipment.printer) : equipment.printer != null) return false;
+        if (projectionScreen != null ? !projectionScreen.equals(equipment.projectionScreen) : equipment.projectionScreen != null)
+            return false;
+        if (recordAV != null ? !recordAV.equals(equipment.recordAV) : equipment.recordAV != null) return false;
+        if (soundsystem != null ? !soundsystem.equals(equipment.soundsystem) : equipment.soundsystem != null)
+            return false;
+        if (translator != null ? !translator.equals(equipment.translator) : equipment.translator != null) return false;
+        if (tv != null ? !tv.equals(equipment.tv) : equipment.tv != null) return false;
+        if (videoconference != null ? !videoconference.equals(equipment.videoconference) : equipment.videoconference != null)
+            return false;
+        if (videoprojector != null ? !videoprojector.equals(equipment.videoprojector) : equipment.videoprojector != null)
+            return false;
+        if (whiteboard != null ? !whiteboard.equals(equipment.whiteboard) : equipment.whiteboard != null) return false;
+        if (wireless != null ? !wireless.equals(equipment.wireless) : equipment.wireless != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (wireless != null ? wireless.hashCode() : 0);
+        result = 31 * result + (videoprojector != null ? videoprojector.hashCode() : 0);
+        result = 31 * result + (laserpointer != null ? laserpointer.hashCode() : 0);
+        result = 31 * result + (projectionScreen != null ? projectionScreen.hashCode() : 0);
+        result = 31 * result + (flipchart != null ? flipchart.hashCode() : 0);
+        result = 31 * result + (whiteboard != null ? whiteboard.hashCode() : 0);
+        result = 31 * result + (soundsystem != null ? soundsystem.hashCode() : 0);
+        result = 31 * result + (microphones != null ? microphones.hashCode() : 0);
+        result = 31 * result + (tv != null ? tv.hashCode() : 0);
+        result = 31 * result + (videoconference != null ? videoconference.hashCode() : 0);
+        result = 31 * result + (recordAV != null ? recordAV.hashCode() : 0);
+        result = 31 * result + (laptop != null ? laptop.hashCode() : 0);
+        result = 31 * result + (printer != null ? printer.hashCode() : 0);
+        result = 31 * result + (translator != null ? translator.hashCode() : 0);
+        result = 31 * result + (conferenceRoom != null ? conferenceRoom.hashCode() : 0);
+        return result;
+    }
 }
